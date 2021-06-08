@@ -4,63 +4,44 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public Sprite GroundSprite;
-
     public int Width, Height;
-    public Building[,] matrix;
+    public Structure[] Structures;
 
-    public bool IsEmpty (BuildingTransform tf)
+    public bool IsInsideBounds (int _x, int _y, int _width, int _height)
     {
-        for (int _x = tf.x; _x < tf.x + tf.width; _x++)
-            for (int _y = tf.y; _y < tf.y + tf.height; _y++)
-                if (matrix[_x, _y] != null)
-                    return false;
+        return _x >= 0 && _y >= 0 && _x < _width && _y < _height;
+    }
+
+    public bool IsEmpty (int _x, int _y, int _width, int _height)
+    {
+        foreach (var str in Structures)
+            if (str.x >= _x && str.y >= _y && _x + _width < str.data.width && _y + _height < str.data.height) //yeap, it's ok
+                return false;
+
         return true;
     }
 
-    public void CreateBuilding (BuildingTransform tf, Sprite sprite)
+    public void Init (MapConfig config)
     {
-        if (tf.x + tf.width >= Width || tf.y + tf.height >= Height)
-            Debug.LogError($"Building out of border");
-        if (tf.x < 0 || tf.y < 0)
-            Debug.LogError($"Building out of border");
+        Width = config.width;
+        Height = config.height;
+        Structures = new Structure[config.structures.Length];
 
-        if (!IsEmpty(tf))
+        for (int i = 0; i < config.structures.Length; i++)
         {
-            Debug.Log("A building already exists");
-            return;
+            (int x, int y, int id) data = config.structures[i];
+            int width = IndexTable.GameStructures[data.id].width;
+            int height = IndexTable.GameStructures[data.id].height;
+            if (!IsInsideBounds(data.x, data.y, width, height))
+                continue;
+            if (!IsEmpty(data.x, data.y, width, height))
+                continue;
+
+            GameObject go = new GameObject($"Building: {data.x}, {data.y}");
+            Structure str = IndexTable.GameStructures[data.id].AttachStructure(go);
+            Structures[i] = str;
+
+
         }
-
-        GameObject go = Instantiate(new GameObject($"Building ({tf.x}, {tf.y})"), new Vector3(tf.x, tf.y, 0), Quaternion.identity);
-        Building building = go.AddComponent<Building>();
-        building.tf = tf;
-        building.Sprite = sprite;
-        SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
-        renderer.sprite = building.Sprite;
-
-        
-        for (int _x = tf.x; _x < tf.x + tf.width; _x++)
-            for (int _y = tf.y; _y < tf.y + tf.height; _y++)
-                matrix[_x, _y] = building;
-
-        building.OnCreate();
-    }
-
-    public void DestroyBuilding(int x, int y)
-    {
-        if (matrix[x, y] == null)
-        {
-            Debug.Log("Building does not exist");
-            return;
-        }
-
-        Building building = matrix[x, y];
-        BuildingTransform tf = matrix[x, y].tf;
-
-        for (int _x = tf.x; _x < tf.x + tf.width; _x++)
-            for (int _y = tf.y; _y < tf.y + tf.height; _y++)
-                matrix[_x, _y] = null;
-
-        building.OnBuildingDestroy();
     }
 }
