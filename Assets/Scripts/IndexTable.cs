@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IndexTable", menuName = "Index Table")]
 public class IndexTable : ScriptableObject
 {
-    public static StructureData[] GameStructures;
+    public static StructureType[] GameStructures;
 
-    public StructureData[] gameStructures;
+    public StructureType[] gameStructures;
 
     private void OnValidate()
     {

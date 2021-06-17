@@ -5,19 +5,20 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public int Width, Height;
-    public Structure[] Structures;
+    public List<Structure> Structures;
 
     public bool IsInsideBounds (int _x, int _y, int _width, int _height)
     {
-        return _x >= 0 && _y >= 0 && _x < _width && _y < _height;
+        return _x >= 0 && _y >= 0 && _x + _width < Width && _y + _height < Height;
     }
 
     public bool IsEmpty (int _x, int _y, int _width, int _height)
     {
-        foreach (var str in Structures)
-            if (str.x >= _x && str.y >= _y && _x + _width < str.data.width && _y + _height < str.data.height) //yeap, it's ok
-                return false;
-
+        for (int x = _x; x < _x + _width; x++)
+            for (int y = _x; y < _y + _height; y++)
+                foreach (Structure str in Structures)
+                    if (str.x <= x && x < str.x + str.data.width && str.y <= y && y < str.y + str.data.height)
+                        return false;
         return true;
     }
 
@@ -25,23 +26,12 @@ public class Map : MonoBehaviour
     {
         Width = config.width;
         Height = config.height;
-        Structures = new Structure[config.structures.Length];
+        Structures = new List<Structure>();
 
         for (int i = 0; i < config.structures.Length; i++)
         {
             (int x, int y, int id) data = config.structures[i];
-            int width = IndexTable.GameStructures[data.id].width;
-            int height = IndexTable.GameStructures[data.id].height;
-            if (!IsInsideBounds(data.x, data.y, width, height))
-                continue;
-            if (!IsEmpty(data.x, data.y, width, height))
-                continue;
-
-            GameObject go = new GameObject($"Building: {data.x}, {data.y}");
-            Structure str = IndexTable.GameStructures[data.id].AttachStructure(go);
-            Structures[i] = str;
-
-
+            IndexTable.GameStructures[data.id].CreateThisStructure(this, data.x, data.y);
         }
     }
 }

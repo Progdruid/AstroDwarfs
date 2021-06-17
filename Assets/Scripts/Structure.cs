@@ -6,7 +6,9 @@ using UnityEngine;
 public class Structure : MonoBehaviour
 {
     public int x, y;
-    public StructureData data;
+    public StructureType data;
+
+
 
     public virtual void OnCreate() { }
 

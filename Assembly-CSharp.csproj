@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\MapConfig.cs" />
-    <Compile Include="Assets\Scripts\StructureData.cs" />
+    <Compile Include="Assets\Scripts\StructureType.cs" />
+    <Compile Include="Assets\Scripts\IndexTable.cs" />
     <Compile Include="Assets\Scripts\Structure.cs" />
     <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
-    <Compile Include="Assets\Scripts\IndexTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
