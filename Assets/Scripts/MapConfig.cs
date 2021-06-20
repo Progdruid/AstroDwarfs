@@ -8,4 +8,6 @@ public class MapConfig
     public int width, height;
 
     public (int x, int y, int id)[] structures;
+
+    public int SpawningStructureIndex;
 }
