@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\Editor.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
+    <Compile Include="Assets\Scripts\EditorUI.cs" />
+    <Compile Include="Assets\Scripts\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

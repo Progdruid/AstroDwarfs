@@ -28,10 +28,9 @@ public class Map : MonoBehaviour
         Height = config.height;
         Structures = new List<Structure>();
 
-        for (int i = 0; i < config.structures.Length; i++)
+        for (int i = 0; i < config.structCount; i++)
         {
-            (int x, int y, int id) data = config.structures[i];
-            IndexTable.GameStructures[data.id].CreateThisStructure(this, data.x, data.y);
+            IndexTable.GameStructures[config.ids[i]].CreateThisStructure(this, config.xs[i], config.ys[i]);
         }
     }
 }

@@ -7,7 +7,10 @@ public class MapConfig
 {
     public int width, height;
 
-    public (int x, int y, int id)[] structures;
+    public int structCount;
+    public int[] xs;
+    public int[] ys;
+    public int[] ids;
 
     public int SpawningStructureIndex;
 }

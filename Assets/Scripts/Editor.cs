@@ -5,6 +5,8 @@ using System.IO;
 
 public class Editor : MonoBehaviour
 {
+    [SerializeField] GameObject BGObj;
+    [Space]
     [SerializeField] int Width;
     [SerializeField] int Height;
     [SerializeField] Sprite BgTileSprite;
@@ -14,22 +16,44 @@ public class Editor : MonoBehaviour
 
     private List<(int x, int y, StructureType str, GameObject go)> structures;
 
-    public void CreateStructure (StructureType str, int x, int y)
-    {
-        GameObject go = new GameObject($"{str.Name}: {x}, {y}");
-        go.transform.position = new Vector3(x, y, -1);
-        go.AddComponent<SpriteRenderer>().sprite = str.sprite;
+    private StructureType Selected;
 
-        structures.Add((x, y, str, go));
+    public void SetSelected(int ID) => Selected = IndexTable.GameStructures[ID];
+
+
+    public void CreateStructure (int x, int y)
+    {
+        if (x < 0 || x >= Width || y < 0 || y >= Height)
+            return;
+
+        (int x, int y, StructureType str, GameObject go)? overlapItem = null;
+        foreach ((int x, int y, StructureType str, GameObject go) item in structures)
+        {
+            if(Utilities.AreOverlapping(x, y, Selected.width, Selected.height, item.x, item.y, item.str.width, item.str.height))
+                overlapItem = item;
+        }
+
+        if (overlapItem.HasValue)
+            return;
+
+        GameObject go = new GameObject($"{Selected.Name}: {x}, {y}");
+        go.transform.position = new Vector3(x, y, -1);
+        go.AddComponent<SpriteRenderer>().sprite = Selected.sprite;
+
+        structures.Add((x, y, Selected, go));
     }
 
     public void DeleteStructure (int x, int y)
     {
+        if (x < 0 || x >= Width || y < 0 || y >= Height)
+            return;
+
         (int x, int y, StructureType str, GameObject go)? deletingItem = null;
-        foreach ((int x, int y, StructureType str, GameObject go) item in structures)
+
+        for (int i = 0; i < structures.Count; i++)
         {
-            if (item.x <= x && item.y <= y && x < item.x + item.str.width && y < item.y + item.str.height)
-                deletingItem = item;
+            if (Utilities.AreOverlapping(x, y, 0, 0, structures[i].x, structures[i].y, structures[i].str.width, structures[i].str.height))
+                deletingItem = structures[i];
         }
 
         if (deletingItem == null)
@@ -45,13 +69,22 @@ public class Editor : MonoBehaviour
         config.width = Width;
         config.height = Height;
         config.SpawningStructureIndex = SpawningStructure.GetID();
-        
-        List<(int x, int y, int id)> strs = new List<(int x, int y, int id)>();
+        config.structCount = structures.Count;
+
+        List<int> xs = new List<int>();
+        List<int> ys = new List<int>();
+        List<int> ids = new List<int>();
+
         foreach ((int x, int y, StructureType str, GameObject go) item in structures)
         {
-            strs.Add((item.x, item.y, item.str.GetID()));
+            xs.Add(item.x);
+            ys.Add(item.y);
+            ids.Add(item.str.GetID());
         }
-        config.structures = strs.ToArray();
+
+        config.xs = xs.ToArray();
+        config.ys = ys.ToArray();
+        config.ids = ids.ToArray();
 
         string configText = JsonUtility.ToJson(config);
         FileStream stream = new FileStream(SavePath + FileName, FileMode.Create);
@@ -69,8 +102,10 @@ public class Editor : MonoBehaviour
                 GameObject go = new GameObject($"BgTile: {x}, {y}");
                 go.transform.position = new Vector3(x, y, 0);
                 go.AddComponent<SpriteRenderer>().sprite = BgTileSprite;
+                go.transform.SetParent(BGObj.transform);
             }
 
         structures = new List<(int x, int y, StructureType str, GameObject go)>();
+        Selected = IndexTable.GameStructures[0]; //default
     }
 }

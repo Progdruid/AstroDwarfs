@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf12c2e44518e7449a9c62b8ef66fa5, type: 3}
   m_Name: IndexTable
   m_EditorClassIdentifier: 
+  gameStructures:
+  - {fileID: 11400000, guid: b7bb1e8f61a6e4842bc76d05a3ddad36, type: 2}
