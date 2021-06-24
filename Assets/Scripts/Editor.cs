@@ -52,7 +52,7 @@ public class Editor : MonoBehaviour
 
         for (int i = 0; i < structures.Count; i++)
         {
-            if (Utilities.AreOverlapping(x, y, 0, 0, structures[i].x, structures[i].y, structures[i].str.width, structures[i].str.height))
+            if (Utilities.AreOverlapping(x, y, 1, 1, structures[i].x, structures[i].y, structures[i].str.width, structures[i].str.height))
                 deletingItem = structures[i];
         }
 
