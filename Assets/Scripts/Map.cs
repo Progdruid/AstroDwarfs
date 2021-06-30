@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map
 {
     public int Width, Height;
     public List<Structure> Structures;
@@ -14,11 +14,9 @@ public class Map : MonoBehaviour
 
     public bool IsEmpty (int _x, int _y, int _width, int _height)
     {
-        for (int x = _x; x < _x + _width; x++)
-            for (int y = _x; y < _y + _height; y++)
-                foreach (Structure str in Structures)
-                    if (str.x <= x && x < str.x + str.data.width && str.y <= y && y < str.y + str.data.height)
-                        return false;
+        foreach (var str in Structures)
+            if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, str.data.width, str.data.height))
+                return false;
         return true;
     }
 
