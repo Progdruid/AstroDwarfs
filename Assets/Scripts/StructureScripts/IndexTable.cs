@@ -9,6 +9,11 @@ public class IndexTable : ScriptableObject
 
     public StructureType[] gameStructures;
 
+    private void Awake()
+    {
+        OnValidate();
+    }
+
     private void OnValidate()
     {
         GameStructures = gameStructures;

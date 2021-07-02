@@ -87,7 +87,7 @@ public class Editor : MonoBehaviour
         config.ids = ids.ToArray();
 
         string configText = JsonUtility.ToJson(config);
-        FileStream stream = new FileStream(SavePath + FileName, FileMode.Create);
+        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + FileName, FileMode.Create);
         using (StreamWriter writer = new StreamWriter(stream))
         {
             writer.Write(configText);
@@ -107,5 +107,7 @@ public class Editor : MonoBehaviour
 
         structures = new List<(int x, int y, StructureType str, GameObject go)>();
         Selected = IndexTable.GameStructures[0]; //default
+
+        Camera.main.GetComponent<CameraMovement>().SetSizes(Width, Height);
     }
 }

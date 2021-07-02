@@ -351,9 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8baaf50a58dd34dafe420b945ff85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 50
-  Height: 100
-  CameraSpeed: 0.5
+  CameraSpeed: 0.05
   CameraMinSize: 1
   ZoomSpeed: 0.25
 --- !u!1 &714130741

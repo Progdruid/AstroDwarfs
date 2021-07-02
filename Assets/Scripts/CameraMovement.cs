@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public int Width, Height;
+    private int Width, Height;
     public float CameraSpeed;
     public float CameraMinSize;
     public float ZoomSpeed;
@@ -12,6 +12,11 @@ public class CameraMovement : MonoBehaviour
     private Camera Camera;
     private float CameraWidth => CameraHeight * Camera.aspect; 
     private float CameraHeight => Camera.orthographicSize;
+
+    public void SetSizes (int width, int height)
+    {
+        Width = width; Height = height;
+    }
 
     private void Start()
     {
