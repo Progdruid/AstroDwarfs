@@ -29,7 +29,7 @@ public class Editor : MonoBehaviour
         (int x, int y, StructureType str, GameObject go)? overlapItem = null;
         foreach ((int x, int y, StructureType str, GameObject go) item in structures)
         {
-            if(Utilities.AreOverlapping(x, y, Selected.width, Selected.height, item.x, item.y, item.str.width, item.str.height))
+            if(Utilities.AreOverlapping(x, y, Selected.Width, Selected.Height, item.x, item.y, item.str.Width, item.str.Height))
                 overlapItem = item;
         }
 
@@ -38,7 +38,7 @@ public class Editor : MonoBehaviour
 
         GameObject go = new GameObject($"{Selected.Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, -1);
-        go.AddComponent<SpriteRenderer>().sprite = Selected.sprite;
+        go.AddComponent<SpriteRenderer>().sprite = Selected.Sprite;
 
         structures.Add((x, y, Selected, go));
     }
@@ -52,7 +52,7 @@ public class Editor : MonoBehaviour
 
         for (int i = 0; i < structures.Count; i++)
         {
-            if (Utilities.AreOverlapping(x, y, 1, 1, structures[i].x, structures[i].y, structures[i].str.width, structures[i].str.height))
+            if (Utilities.AreOverlapping(x, y, 1, 1, structures[i].x, structures[i].y, structures[i].str.Width, structures[i].str.Height))
                 deletingItem = structures[i];
         }
 

@@ -162,11 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8baaf50a58dd34dafe420b945ff85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 0
-  Height: 0
-  CameraSpeed: 0
-  CameraMinSize: 0
-  ZoomSpeed: 0
+  CameraSpeed: 0.005
+  CameraMinSize: 1
+  ZoomSpeed: 0.05
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -268,9 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792bd9f5cff1c784cbc279986e122605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadMapPath: 
-  LoadMapName: 
-  Camera: {fileID: 0}
+  LoadMapName: Map
+  TickTime: 0.05
 --- !u!114 &1697110744
 MonoBehaviour:
   m_ObjectHideFlags: 0

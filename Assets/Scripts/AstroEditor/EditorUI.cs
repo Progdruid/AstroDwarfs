@@ -12,7 +12,7 @@ public class EditorUI : MonoBehaviour
     {
         List<Dropdown.OptionData> Options = new List<Dropdown.OptionData>();
         foreach (StructureType str in IndexTable.GameStructures)
-            Options.Add(new Dropdown.OptionData(str.Name, str.sprite));
+            Options.Add(new Dropdown.OptionData(str.Name, str.Sprite));
 
         StructureSelect.AddOptions(Options);
     }

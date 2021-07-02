@@ -8,7 +8,10 @@ public class Structure : MonoBehaviour
     public int x, y;
     public StructureType data;
 
-
+    public virtual void Tick ()
+    {
+        Debug.Log($"Ticked: {data.Name} ({x}, {y})");
+    }
 
     public virtual void OnCreate() { }
 

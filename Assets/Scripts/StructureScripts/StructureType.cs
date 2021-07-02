@@ -7,20 +7,21 @@ using UnityEngine;
 public class StructureType : ScriptableObject
 {
     public string Name;
-    public Sprite sprite;
-    public int width, height;
+    public Sprite Sprite;
+    public int Width, Height;
 
     public int GetID () => System.Array.IndexOf( IndexTable.GameStructures, this);
 
     public virtual Structure CreateThisStructure (Map map, int x, int y)
     {
-        if(!map.IsInsideBounds(x, y, width, height))
-            throw new System.Exception($"Area: {x}->{x + width}, {y}->{y + height} is out of bounds");
-        if (!map.IsEmpty(x, y, width, height))
-            throw new System.Exception($"Area: {x}->{x + width}, {y}->{y + height} is not empty");
+        if(!map.IsInsideBounds(x, y, Width, Height))
+            throw new System.Exception($"Area: {x}->{x + Width}, {y}->{y + Height} is out of bounds");
+        if (!map.IsEmpty(x, y, Width, Height))
+            throw new System.Exception($"Area: {x}->{x + Width}, {y}->{y + Height} is not empty");
 
         GameObject go = new GameObject($"{Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, 0);
+        go.AddComponent<SpriteRenderer>().sprite = Sprite;
         Structure str = go.AddComponent<Structure>();
         str.x = x; str.y = y;
         str.data = this;
