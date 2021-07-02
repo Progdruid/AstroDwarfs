@@ -11,7 +11,7 @@ public class Editor : MonoBehaviour
     [SerializeField] int Height;
     [SerializeField] Sprite BgTileSprite;
     [SerializeField] StructureType SpawningStructure;
-    [SerializeField] string SavePath;
+    [Tooltip(tooltip: "Will always be saved in /Assets/Maps/")]
     [SerializeField] string FileName;
 
     private List<(int x, int y, StructureType str, GameObject go)> structures;

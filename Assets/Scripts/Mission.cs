@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour
 {
-    [SerializeField] string LoadMapPath, LoadMapName;
-    [SerializeField] GameObject Camera;
-
+    [SerializeField] string LoadMapName;
 
     public Map MissionMap { get; private set; }
 
     public void Start()
     {
-        CreateMapFromConfig(LoadMapPath, LoadMapName);
-        
+        CreateMapFromConfig(LoadMapName);
+        Camera.main.GetComponent<CameraMovement>().SetSizes(MissionMap.Width, MissionMap.Height);
+
     }
 
-    private void CreateMapFromConfig(string path, string name)
+    private void CreateMapFromConfig(string name)
     {
-        FileStream stream = new FileStream(Application.dataPath + "/Assets/Maps/" + LoadMapPath, FileMode.OpenOrCreate);
+        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + name, FileMode.OpenOrCreate);
         StreamReader reader = new StreamReader(stream);
         string text = reader.ReadToEnd();
 
