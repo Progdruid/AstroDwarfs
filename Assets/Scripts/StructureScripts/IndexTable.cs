@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 [CreateAssetMenu(fileName = "IndexTable", menuName = "Index Table")]
 public class IndexTable : ScriptableObject
 {

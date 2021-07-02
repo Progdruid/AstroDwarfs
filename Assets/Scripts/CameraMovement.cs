@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour
             if (gameObject.transform.position.x - CameraWidth > 0)
                 direction = Vector3.left;
 
-        gameObject.transform.position += direction * CameraSpeed;
+        gameObject.transform.position += direction * CameraSpeed * Camera.orthographicSize;
 
         if (Input.GetKey(KeyCode.Q))
             if (Camera.orthographicSize - ZoomSpeed >= CameraMinSize)
