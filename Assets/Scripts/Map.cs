@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Map
 {
-    public int Width, Height;
-    public List<Structure> Structures;
+    public int Width { get; private set; }
+    public int Height { get; private set; }
+    public StructureType SpawningStructure { get; private set; } //only 1x1
 
-    //maybe i might make it async
+    public List<Structure> Structures;
+    
+
+    //maybe i might make this async
     public void TickAll ()
     {
+
+
         for (int i = 0; i < Structures.Count; i++)
             Structures[i].Tick();
     }
@@ -31,6 +37,7 @@ public class Map
     {
         Width = config.width;
         Height = config.height;
+        SpawningStructure = IndexTable.GameStructures[config.SpawningStructureIndex];
         Structures = new List<Structure>();
 
         for (int i = 0; i < config.structCount; i++)
