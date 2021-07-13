@@ -6,43 +6,69 @@ public class Map
 {
     public int Width { get; private set; }
     public int Height { get; private set; }
-    public StructureType SpawningStructure { get; private set; } //only 1x1
 
-    public List<Structure> Structures;
-    
+    #region Structures API
 
-    //maybe i might make this async
-    public void TickAll ()
+    private List<Structure> structs;
+    private List<ITickable> tickables;
+    private Structure[,] matrix;
+
+    public int StrCount => structs.Count;
+
+    public void AddStructure (Structure str)
     {
+        structs.Add(str);
+        tickables.Add(str);
 
-
-        for (int i = 0; i < Structures.Count; i++)
-            Structures[i].Tick();
+        for (int x = str.x; x < str.x + str.data.Width; x++)
+            for (int y = str.y; y < str.y + str.data.Height; y++)
+                matrix[x, y] = str;
     }
-
-    public bool IsInsideBounds (int _x, int _y, int _width, int _height)
+    public void RemoveStructure (Structure str)
     {
-        return _x >= 0 && _y >= 0 && _x + _width < Width && _y + _height < Height;
+        structs.Remove(str);
+        tickables.Add(str);
+
+        for (int x = str.x; x < str.x + str.data.Width; x++)
+            for (int y = str.y; y < str.y + str.data.Height; y++)
+                matrix[x, y] = null;
     }
-
-    public bool IsEmpty (int _x, int _y, int _width, int _height)
+    public Structure GetAtPos(int _x, int _y) => matrix[_x, _y];
+    public Structure GetAtIndex(int _i) => structs[_i];
+    public bool IsInsideBounds(int _x, int _y, int _width, int _height)
     {
-        foreach (var str in Structures)
+        return _x >= 0 && _y >= 0 && _x + _width <= Width && _y + _height <= Height;
+    }
+    public bool IsEmpty(int _x, int _y, int _width, int _height)
+    {
+        foreach (var str in structs)
             if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, str.data.Width, str.data.Height))
                 return false;
         return true;
     }
 
+    #endregion
+
+    //maybe i might make this async
+    public void TickAll ()
+    {
+        for (int i = 0; i < structs.Count; i++)
+            tickables[i].Tick();
+    }
+
+
+
     public void Init (MapConfig config)
     {
         Width = config.width;
         Height = config.height;
-        SpawningStructure = IndexTable.GameStructures[config.SpawningStructureIndex];
-        Structures = new List<Structure>();
+        structs = new List<Structure>();
+        tickables = new List<ITickable>();
+        matrix = new Structure[Width, Height];
 
         for (int i = 0; i < config.structCount; i++)
         {
-            IndexTable.GameStructures[config.ids[i]].CreateThisStructure(this, config.xs[i], config.ys[i]);
+            IndexTable.GameStructures[config.ids[i]].CreateThisStructure(config.xs[i], config.ys[i]);
         }
     }
 }

@@ -10,22 +10,22 @@ public class Mission : MonoBehaviour
 
     private float tickTime;
 
-    public Map MissionMap { get; private set; }
+    public static Map Map { get; private set; }
 
     private void Start()
     {
         CreateMapFromConfig(LoadMapName);
-        Camera.main.GetComponent<CameraMovement>().SetSizes(MissionMap.Width, MissionMap.Height);
+        Camera.main.GetComponent<CameraMovement>().SetSizes(Map.Width, Map.Height);
 
     }
 
     private void Update()
     {
-        tickTime += Time.fixedDeltaTime;
+        tickTime += Time.deltaTime;
         if (tickTime >= TickTime)
         {
             tickTime = 0f;
-            MissionMap.TickAll();
+            Map.TickAll();
         }
     }
 
@@ -36,8 +36,8 @@ public class Mission : MonoBehaviour
         string text = reader.ReadToEnd();
 
         MapConfig config = JsonUtility.FromJson<MapConfig>(text);
-        MissionMap = new Map();
-        MissionMap.Init(config);
+        Map = new Map();
+        Map.Init(config);
     }
 
 

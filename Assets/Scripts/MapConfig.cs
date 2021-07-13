@@ -11,6 +11,4 @@ public class MapConfig
     public int[] xs;
     public int[] ys;
     public int[] ids;
-
-    public int SpawningStructureIndex;
 }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eac884f5c936d64a9b50f790e6889f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 40fa47db51f7d0b458577e2f6fe6cc61, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
   Name: Rock

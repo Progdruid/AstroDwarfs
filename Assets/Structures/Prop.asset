@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eac884f5c936d64a9b50f790e6889f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 01a56871b8543dc48aa1a7b901d123b9, type: 3}
   m_Name: Prop
   m_EditorClassIdentifier: 
   Name: Prop
   Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   Width: 1
   Height: 1
+  Range: 4.5

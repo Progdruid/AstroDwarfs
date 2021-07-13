@@ -6,11 +6,11 @@ using System.IO;
 public class Editor : MonoBehaviour
 {
     [SerializeField] GameObject BGObj;
+    [SerializeField] Sprite BgTileSprite;
+
     [Space]
     [SerializeField] int Width;
     [SerializeField] int Height;
-    [SerializeField] Sprite BgTileSprite;
-    [SerializeField] StructureType SpawningStructure;
     [Tooltip(tooltip: "Will always be saved in /Assets/Maps/")]
     [SerializeField] string FileName;
 
@@ -68,7 +68,6 @@ public class Editor : MonoBehaviour
         MapConfig config = new MapConfig();
         config.width = Width;
         config.height = Height;
-        config.SpawningStructureIndex = SpawningStructure.GetID();
         config.structCount = structures.Count;
 
         List<int> xs = new List<int>();

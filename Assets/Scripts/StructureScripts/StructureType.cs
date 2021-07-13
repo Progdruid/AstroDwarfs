@@ -12,20 +12,22 @@ public class StructureType : ScriptableObject
 
     public int GetID () => System.Array.IndexOf( IndexTable.GameStructures, this);
 
-    public virtual Structure CreateThisStructure (Map map, int x, int y)
+    public Structure CreateThisStructure (int x, int y)
     {
-        if(!map.IsInsideBounds(x, y, Width, Height))
+        if(!Mission.Map.IsInsideBounds(x, y, Width, Height))
             throw new System.Exception($"Area: {x}->{x + Width}, {y}->{y + Height} is out of bounds");
-        if (!map.IsEmpty(x, y, Width, Height))
+        if (!Mission.Map.IsEmpty(x, y, Width, Height))
             throw new System.Exception($"Area: {x}->{x + Width}, {y}->{y + Height} is not empty");
 
         GameObject go = new GameObject($"{Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, 0);
         go.AddComponent<SpriteRenderer>().sprite = Sprite;
-        Structure str = go.AddComponent<Structure>();
+
+        Structure str = AttachStructure(go);
+
         str.x = x; str.y = y;
-        str.data = this;
-        map.Structures.Add(str);
+
+        str.OnCreate();
 
         return str;
     }
