@@ -1,5 +1,9 @@
-/Library/Artifacts
+# Unity
 
-/Library/ArtifactDB
-
+Temp/
+Library/
 Logs/
+UserSettings/
+
+# VS
+.vs/
