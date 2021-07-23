@@ -12,6 +12,9 @@ public class Mission : MonoBehaviour
 
     public static Map Map { get; private set; }
 
+    public delegate void TickEventHandler();
+    public static event TickEventHandler TickEvent;
+
     private void Start()
     {
         CreateMapFromConfig(LoadMapName);
@@ -25,7 +28,7 @@ public class Mission : MonoBehaviour
         if (tickTime >= TickTime)
         {
             tickTime = 0f;
-            Map.TickAll();
+            TickEvent();
         }
     }
 

@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadMapName: Map
-  TickTime: 1
+  TickTime: 0.02
 --- !u!114 &1697110744
 MonoBehaviour:
   m_ObjectHideFlags: 0

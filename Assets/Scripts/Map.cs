@@ -10,7 +10,6 @@ public class Map
     #region Structures API
 
     private List<Structure> structs;
-    private List<ITickable> tickables;
     private Structure[,] matrix;
 
     public int StrCount => structs.Count;
@@ -18,7 +17,6 @@ public class Map
     public void AddStructure (Structure str)
     {
         structs.Add(str);
-        tickables.Add(str);
 
         for (int x = str.x; x < str.x + str.data.Width; x++)
             for (int y = str.y; y < str.y + str.data.Height; y++)
@@ -27,7 +25,6 @@ public class Map
     public void RemoveStructure (Structure str)
     {
         structs.Remove(str);
-        tickables.Add(str);
 
         for (int x = str.x; x < str.x + str.data.Width; x++)
             for (int y = str.y; y < str.y + str.data.Height; y++)
@@ -49,13 +46,6 @@ public class Map
 
     #endregion
 
-    //maybe i might make this async
-    public void TickAll ()
-    {
-        for (int i = 0; i < structs.Count; i++)
-            tickables[i].Tick();
-    }
-
 
 
     public void Init (MapConfig config)
@@ -63,7 +53,6 @@ public class Map
         Width = config.width;
         Height = config.height;
         structs = new List<Structure>();
-        tickables = new List<ITickable>();
         matrix = new Structure[Width, Height];
 
         for (int i = 0; i < config.structCount; i++)

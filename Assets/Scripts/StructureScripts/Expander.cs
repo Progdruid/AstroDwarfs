@@ -13,8 +13,6 @@ public class Expander : Structure
             Structure up = Mission.Map.GetAtPos(x, y + 1);
             if(!(up is Expander) && !Prop.IsInArea(x, y + 1))
             {
-                if (up == null)
-                    ;
                 if (up != null)
                     up.Kill();
                 data.CreateThisStructure(x, y + 1);

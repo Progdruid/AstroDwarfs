@@ -16,11 +16,13 @@ public class Structure : MonoBehaviour, ITickable
     public virtual void OnCreate() 
     {
         Mission.Map.AddStructure(this);
+        Mission.TickEvent += Tick;
     }
 
     public virtual void Kill()
     {
         Mission.Map.RemoveStructure(this);
+        Mission.TickEvent -= Tick;
 
         Destroy(gameObject);
         Destroy(this);
