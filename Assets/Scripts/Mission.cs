@@ -7,6 +7,7 @@ public class Mission : MonoBehaviour
 {
     [SerializeField] string LoadMapName;
     [SerializeField] float TickTime;
+    [SerializeField] Transform MapParent;
 
     private float tickTime;
 
@@ -39,8 +40,7 @@ public class Mission : MonoBehaviour
         string text = reader.ReadToEnd();
 
         MapConfig config = JsonUtility.FromJson<MapConfig>(text);
-        Map = new Map();
-        Map.Init(config);
+        Map = new Map(MapParent, config);
     }
 
 

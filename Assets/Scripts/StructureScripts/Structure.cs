@@ -15,7 +15,6 @@ public class Structure : MonoBehaviour, ITickable
 
     public virtual void OnCreate() 
     {
-        Mission.Map.AddStructure(this);
         Mission.TickEvent += Tick;
     }
 

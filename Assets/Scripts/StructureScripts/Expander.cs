@@ -15,7 +15,7 @@ public class Expander : Structure
             {
                 if (up != null)
                     up.Kill();
-                data.CreateThisStructure(x, y + 1);
+                Mission.Map.CreateStructure(x, y + 1, data.GetID());
             }
         }
         if (x + data.Width + 1 <= Mission.Map.Width)
@@ -25,7 +25,7 @@ public class Expander : Structure
             {
                 if (right != null)
                     right.Kill();
-                data.CreateThisStructure(x + 1, y);
+                Mission.Map.CreateStructure(x + 1, y, data.GetID());
             }
         }
         if (y - 1 >= 0)
@@ -35,7 +35,7 @@ public class Expander : Structure
             {
                 if (down != null)
                     down.Kill();
-                data.CreateThisStructure(x, y - 1);
+                Mission.Map.CreateStructure(x, y - 1, data.GetID());
             }
         }
         if (x - 1 >= 0)
@@ -45,7 +45,7 @@ public class Expander : Structure
             {
                 if (left != null)
                     left.Kill();
-                data.CreateThisStructure(x - 1, y);
+                Mission.Map.CreateStructure(x - 1, y, data.GetID());
             }
         }
     }

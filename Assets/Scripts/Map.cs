@@ -7,6 +7,22 @@ public class Map
     public int Width { get; private set; }
     public int Height { get; private set; }
 
+    private Transform parent;
+
+    public Map(Transform _parent, MapConfig _config)
+    {
+        parent = _parent;
+
+        Width = _config.width;
+        Height = _config.height;
+        structs = new List<Structure>();
+        matrix = new Structure[Width, Height];
+
+        for (int i = 0; i < _config.structCount; i++)
+            CreateStructure(_config.xs[i], _config.ys[i], _config.ids[i]);
+        
+    }
+
     #region Structures API
 
     private List<Structure> structs;
@@ -46,18 +62,26 @@ public class Map
 
     #endregion
 
-
-
-    public void Init (MapConfig config)
+    public Structure CreateStructure (int x, int y, int id)
     {
-        Width = config.width;
-        Height = config.height;
-        structs = new List<Structure>();
-        matrix = new Structure[Width, Height];
+        StructureType data = IndexTable.GameStructures[id];
 
-        for (int i = 0; i < config.structCount; i++)
-        {
-            IndexTable.GameStructures[config.ids[i]].CreateThisStructure(config.xs[i], config.ys[i]);
-        }
+        if (!IsInsideBounds(x, y, data.Width, data.Height))
+            throw new System.Exception($"Area: {x}->{x + data.Width}, {y}->{y + data.Height} is out of bounds");
+        if (!IsEmpty(x, y, data.Width, data.Height))
+            throw new System.Exception($"Area: {x}->{x + data.Width}, {y}->{y + data.Height} is not empty");
+
+        GameObject go = new GameObject($"{data.Name}: {x}, {y}");
+        go.transform.position = new Vector3(x, y, 0);
+        go.AddComponent<SpriteRenderer>().sprite = data.Sprite;
+
+        Structure str = data.AttachStructure(go);
+
+        str.x = x; str.y = y;
+
+        AddStructure(str);
+        str.OnCreate();
+
+        return str;
     }
 }
