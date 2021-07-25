@@ -6,7 +6,7 @@ using UnityEngine;
 public class Structure : MonoBehaviour, ITickable
 {
     public int x, y;
-    public StructureType data;
+    public int dataID;
 
     public virtual void Tick ()
     {

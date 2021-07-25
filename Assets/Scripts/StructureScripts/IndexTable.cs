@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IndexTable", menuName = "Index Table")]
 public class IndexTable : ScriptableObject
 {
-    public static StructureType[] GameStructures;
+    private static StructureType[] GameStructures;
 
     public StructureType[] gameStructures;
 
@@ -14,4 +14,8 @@ public class IndexTable : ScriptableObject
     {
         GameStructures = gameStructures;
     }
+
+    public static int GetID(StructureType type) => System.Array.IndexOf(GameStructures, type);
+    public static StructureType GetStr(int id) => GameStructures[id];
+    public static int strCount => GameStructures.Length;
 }

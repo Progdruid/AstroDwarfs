@@ -18,7 +18,7 @@ public class Editor : MonoBehaviour
 
     private StructureType Selected;
 
-    public void SetSelected(int ID) => Selected = IndexTable.GameStructures[ID];
+    public void SetSelected(int ID) => Selected = IndexTable.GetStr(ID);
 
 
     public void CreateStructure (int x, int y)
@@ -74,11 +74,11 @@ public class Editor : MonoBehaviour
         List<int> ys = new List<int>();
         List<int> ids = new List<int>();
 
-        foreach ((int x, int y, StructureType str, GameObject go) item in structures)
+        for (int i = 0; i < structures.Count; i++)
         {
-            xs.Add(item.x);
-            ys.Add(item.y);
-            ids.Add(item.str.GetID());
+            xs.Add(structures[i].x);
+            ys.Add(structures[i].y);
+            ids.Add(i);
         }
 
         config.xs = xs.ToArray();
@@ -105,7 +105,7 @@ public class Editor : MonoBehaviour
             }
 
         structures = new List<(int x, int y, StructureType str, GameObject go)>();
-        Selected = IndexTable.GameStructures[0]; //default
+        Selected = IndexTable.GetStr(0); //default
 
         Camera.main.GetComponent<CameraMovement>().SetSizes(Width, Height);
     }

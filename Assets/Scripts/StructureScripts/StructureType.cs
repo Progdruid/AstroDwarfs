@@ -10,8 +10,6 @@ public class StructureType : ScriptableObject
     public Sprite Sprite;
     public int Width, Height;
 
-    public int GetID () => System.Array.IndexOf( IndexTable.GameStructures, this);
-
     public Structure CreateThisStructure (int x, int y)
     {
         if(!Mission.Map.IsInsideBounds(x, y, Width, Height))
@@ -35,7 +33,7 @@ public class StructureType : ScriptableObject
     public virtual Structure AttachStructure (GameObject go)
     {
         Structure str = go.AddComponent<Structure>();
-        str.data = this;
+        str.dataID = IndexTable.GetID(this);
         return str;
     }
 }

@@ -10,7 +10,7 @@ public class PropType : StructureType
     public override Structure AttachStructure(GameObject go)
     {
         Structure str = go.AddComponent<Prop>();
-        str.data = this;
+        str.dataID = IndexTable.GetID(this);
         return str;
     }
 }

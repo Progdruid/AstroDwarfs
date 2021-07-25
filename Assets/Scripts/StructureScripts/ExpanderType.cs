@@ -9,7 +9,7 @@ public class ExpanderType : StructureType
     public override Structure AttachStructure(GameObject go)
     {
         Structure str = go.AddComponent<Expander>();
-        str.data = this;
+        str.dataID = IndexTable.GetID(this);
         return str;
     }
 }

@@ -12,8 +12,8 @@ public class EditorUI : MonoBehaviour
     private void Start()
     {
         List<Dropdown.OptionData> Options = new List<Dropdown.OptionData>();
-        foreach (StructureType str in IndexTable.GameStructures)
-            Options.Add(new Dropdown.OptionData(str.Name, str.Sprite));
+        for (int i = 0; i < IndexTable.strCount; i++)
+            Options.Add(new Dropdown.OptionData(IndexTable.GetStr(i).Name, IndexTable.GetStr(i).Sprite));
 
         StructureSelect.AddOptions(Options);
     }

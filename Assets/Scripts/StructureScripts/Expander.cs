@@ -8,24 +8,24 @@ public class Expander : Structure
     {
         base.Tick();
 
-        if (y + data.Height + 1 <= Mission.Map.Height)
+        if (y + IndexTable.GetStr(dataID).Height + 1 <= Mission.Map.Height)
         {
             Structure up = Mission.Map.GetAtPos(x, y + 1);
             if(!(up is Expander) && !Prop.IsInArea(x, y + 1))
             {
                 if (up != null)
                     up.Kill();
-                Mission.Map.CreateStructure(x, y + 1, data.GetID());
+                Mission.Map.CreateStructure(x, y + 1, dataID);
             }
         }
-        if (x + data.Width + 1 <= Mission.Map.Width)
+        if (x + IndexTable.GetStr(dataID).Width + 1 <= Mission.Map.Width)
         {
             Structure right = Mission.Map.GetAtPos(x + 1, y);
             if (!(right is Expander) && !Prop.IsInArea(x + 1, y))
             {
                 if (right != null)
                     right.Kill();
-                Mission.Map.CreateStructure(x + 1, y, data.GetID());
+                Mission.Map.CreateStructure(x + 1, y, dataID);
             }
         }
         if (y - 1 >= 0)
@@ -35,7 +35,7 @@ public class Expander : Structure
             {
                 if (down != null)
                     down.Kill();
-                Mission.Map.CreateStructure(x, y - 1, data.GetID());
+                Mission.Map.CreateStructure(x, y - 1, dataID);
             }
         }
         if (x - 1 >= 0)
@@ -45,7 +45,7 @@ public class Expander : Structure
             {
                 if (left != null)
                     left.Kill();
-                Mission.Map.CreateStructure(x - 1, y, data.GetID());
+                Mission.Map.CreateStructure(x - 1, y, dataID);
             }
         }
     }

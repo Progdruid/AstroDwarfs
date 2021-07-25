@@ -34,16 +34,16 @@ public class Map
     {
         structs.Add(str);
 
-        for (int x = str.x; x < str.x + str.data.Width; x++)
-            for (int y = str.y; y < str.y + str.data.Height; y++)
+        for (int x = str.x; x < str.x + IndexTable.GetStr(str.dataID).Width; x++)
+            for (int y = str.y; y < str.y + IndexTable.GetStr(str.dataID).Height; y++)
                 matrix[x, y] = str;
     }
     public void RemoveStructure (Structure str)
     {
         structs.Remove(str);
 
-        for (int x = str.x; x < str.x + str.data.Width; x++)
-            for (int y = str.y; y < str.y + str.data.Height; y++)
+        for (int x = str.x; x < str.x + IndexTable.GetStr(str.dataID).Width; x++)
+            for (int y = str.y; y < str.y + IndexTable.GetStr(str.dataID).Height; y++)
                 matrix[x, y] = null;
     }
     public Structure GetAtPos(int _x, int _y) => matrix[_x, _y];
@@ -55,7 +55,7 @@ public class Map
     public bool IsEmpty(int _x, int _y, int _width, int _height)
     {
         foreach (var str in structs)
-            if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, str.data.Width, str.data.Height))
+            if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, IndexTable.GetStr(str.dataID).Width, IndexTable.GetStr(str.dataID).Height))
                 return false;
         return true;
     }
@@ -64,7 +64,7 @@ public class Map
 
     public Structure CreateStructure (int x, int y, int id)
     {
-        StructureType data = IndexTable.GameStructures[id];
+        StructureType data = IndexTable.GetStr(id);
 
         if (!IsInsideBounds(x, y, data.Width, data.Height))
             throw new System.Exception($"Area: {x}->{x + data.Width}, {y}->{y + data.Height} is out of bounds");
@@ -73,6 +73,7 @@ public class Map
 
         GameObject go = new GameObject($"{data.Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, 0);
+        go.transform.parent = parent;
         go.AddComponent<SpriteRenderer>().sprite = data.Sprite;
 
         Structure str = data.AttachStructure(go);
