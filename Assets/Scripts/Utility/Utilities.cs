@@ -12,4 +12,13 @@ public class Utilities
                     return true;
         return false;
     }
+
+    public static Sprite LoadSprite (string path, int pixelsPerUnit)
+    {
+        Texture2D texture = (Texture2D)Resources.Load(path);
+        texture.filterMode = FilterMode.Point;
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0f, 0f), pixelsPerUnit);
+        
+        return sprite;
+    }
 }

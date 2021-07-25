@@ -11,7 +11,7 @@ public class Prop : Structure
         foreach (Prop prop in AllProps)
         {
             float dist = Mathf.Sqrt((prop.x - x) * (prop.x - x) + (prop.y - y) * (prop.y - y));
-            if (dist <= ((PropType)IndexTable.GetStr(prop.dataID)).Range)
+            if (dist <= ((PropData)Mission.Registry.GetData(prop.dataID)).Range)
                 return true;
         }
 

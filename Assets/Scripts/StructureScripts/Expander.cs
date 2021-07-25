@@ -8,7 +8,7 @@ public class Expander : Structure
     {
         base.Tick();
 
-        if (y + IndexTable.GetStr(dataID).Height + 1 <= Mission.Map.Height)
+        if (y + Mission.Registry.GetData(dataID).Height + 1 <= Mission.Map.Height)
         {
             Structure up = Mission.Map.GetAtPos(x, y + 1);
             if(!(up is Expander) && !Prop.IsInArea(x, y + 1))
@@ -18,7 +18,7 @@ public class Expander : Structure
                 Mission.Map.CreateStructure(x, y + 1, dataID);
             }
         }
-        if (x + IndexTable.GetStr(dataID).Width + 1 <= Mission.Map.Width)
+        if (x + Mission.Registry.GetData(dataID).Width + 1 <= Mission.Map.Width)
         {
             Structure right = Mission.Map.GetAtPos(x + 1, y);
             if (!(right is Expander) && !Prop.IsInArea(x + 1, y))

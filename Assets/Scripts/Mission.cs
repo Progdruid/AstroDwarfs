@@ -11,6 +11,7 @@ public class Mission : MonoBehaviour
 
     private float tickTime;
 
+    public static Registry Registry { get; private set; }
     public static Map Map { get; private set; }
 
     public delegate void TickEventHandler();
@@ -18,7 +19,7 @@ public class Mission : MonoBehaviour
 
     private void Start()
     {
-        CreateMapFromConfig(LoadMapName);
+        Init(LoadMapName);
         Camera.main.GetComponent<CameraMovement>().SetSizes(Map.Width, Map.Height);
 
     }
@@ -33,9 +34,12 @@ public class Mission : MonoBehaviour
         }
     }
 
-    private void CreateMapFromConfig(string name)
+    private void Init(string loadMapName)
     {
-        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + name + ".json", FileMode.OpenOrCreate);
+        Registry = new Registry();
+        Registry.Init();
+
+        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + loadMapName + ".json", FileMode.OpenOrCreate);
         StreamReader reader = new StreamReader(stream);
         string text = reader.ReadToEnd();
 

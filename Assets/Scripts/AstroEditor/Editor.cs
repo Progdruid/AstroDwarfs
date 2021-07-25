@@ -14,11 +14,13 @@ public class Editor : MonoBehaviour
     [Tooltip(tooltip: "Will always be saved in /Assets/Maps/")]
     [SerializeField] string FileName;
 
-    private List<(int x, int y, StructureType str, GameObject go)> structures;
+    private List<(int x, int y, StructureData str, GameObject go)> structures;
 
-    private StructureType Selected;
+    private StructureData Selected;
 
-    public void SetSelected(int ID) => Selected = IndexTable.GetStr(ID);
+    public Registry registry;
+
+    public void SetSelected(int _id) => Selected = registry.GetData(_id);
 
 
     public void CreateStructure (int x, int y)
@@ -26,8 +28,8 @@ public class Editor : MonoBehaviour
         if (x < 0 || x >= Width || y < 0 || y >= Height)
             return;
 
-        (int x, int y, StructureType str, GameObject go)? overlapItem = null;
-        foreach ((int x, int y, StructureType str, GameObject go) item in structures)
+        (int x, int y, StructureData str, GameObject go)? overlapItem = null;
+        foreach ((int x, int y, StructureData str, GameObject go) item in structures)
         {
             if(Utilities.AreOverlapping(x, y, Selected.Width, Selected.Height, item.x, item.y, item.str.Width, item.str.Height))
                 overlapItem = item;
@@ -48,7 +50,7 @@ public class Editor : MonoBehaviour
         if (x < 0 || x >= Width || y < 0 || y >= Height)
             return;
 
-        (int x, int y, StructureType str, GameObject go)? deletingItem = null;
+        (int x, int y, StructureData str, GameObject go)? deletingItem = null;
 
         for (int i = 0; i < structures.Count; i++)
         {
@@ -104,9 +106,15 @@ public class Editor : MonoBehaviour
                 go.transform.SetParent(BGObj.transform);
             }
 
-        structures = new List<(int x, int y, StructureType str, GameObject go)>();
-        Selected = IndexTable.GetStr(0); //default
+        structures = new List<(int x, int y, StructureData str, GameObject go)>();
+        Selected = registry.GetData(0); //default
 
         Camera.main.GetComponent<CameraMovement>().SetSizes(Width, Height);
+    }
+
+    private void Awake()
+    {
+        registry = new Registry();
+        registry.Init();
     }
 }
