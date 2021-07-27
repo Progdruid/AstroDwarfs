@@ -14,6 +14,11 @@ public class Tester : MonoBehaviour
         Debug.Log($"Second is A: {second is A}, is B: {second is B}");
         Debug.Log($"NULL is A: {NULL is A}, is B: {NULL is B}");
     }
+
+    public static void hello() 
+    {
+        Debug.Log('hellooo mafaka!');
+    }
 }
 
 public class A
