@@ -10,18 +10,18 @@ public class Structure : MonoBehaviour, ITickable
 
     public virtual void Tick ()
     {
-        //Debug.Log($"Ticked: {data.Name} ({x}, {y})");
+
     }
 
     public virtual void OnCreate() 
     {
-        Mission.TickEvent += Tick;
+        Mission.SubscribeTickable(this);
     }
 
     public virtual void Kill()
     {
         Mission.Map.RemoveStructure(this);
-        Mission.TickEvent -= Tick;
+        Mission.UnsubscribeTickable(this);
 
         Destroy(gameObject);
         Destroy(this);

@@ -14,8 +14,8 @@ public class Mission : MonoBehaviour
     public static Registry Registry { get; private set; }
     public static Map Map { get; private set; }
 
-    public delegate void TickEventHandler();
-    public static event TickEventHandler TickEvent;
+    private delegate void TickHandler();
+    private static event TickHandler tickEvent;
 
     private void Start()
     {
@@ -30,7 +30,8 @@ public class Mission : MonoBehaviour
         if (tickTime >= TickTime)
         {
             tickTime = 0f;
-            TickEvent();
+
+            tickEvent();
         }
     }
 
@@ -38,6 +39,8 @@ public class Mission : MonoBehaviour
     {
         Registry = new Registry();
         Registry.Init();
+
+        //tickables = new List<ITickable>();
 
         FileStream stream = new FileStream(Application.dataPath + "/Maps/" + loadMapName + ".json", FileMode.OpenOrCreate);
         StreamReader reader = new StreamReader(stream);
@@ -47,5 +50,9 @@ public class Mission : MonoBehaviour
         Map = new Map(MapParent, config);
     }
 
+
+    public static void SubscribeTickable(ITickable tickable) => tickEvent += tickable.Tick;
+
+    public static void UnsubscribeTickable(ITickable tickable) => tickEvent -= tickable.Tick;
 
 }
