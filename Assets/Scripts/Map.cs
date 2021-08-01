@@ -19,7 +19,7 @@ public class Map
         matrix = new Structure[Width, Height];
 
         for (int i = 0; i < _config.structCount; i++)
-            CreateStructure(_config.xs[i], _config.ys[i], _config.ids[i]);
+            CreateStructure(_config.xs[i], _config.ys[i], Mission.Registry.GetData(_config.ids[i]));
         
     }
 
@@ -34,16 +34,16 @@ public class Map
     {
         structs.Add(str);
 
-        for (int x = str.x; x < str.x + Mission.Registry.GetData(str.dataID).Width; x++)
-            for (int y = str.y; y < str.y + Mission.Registry.GetData(str.dataID).Height; y++)
+        for (int x = str.x; x < str.x + str.data.Width; x++)
+            for (int y = str.y; y < str.y + str.data.Height; y++)
                 matrix[x, y] = str;
     }
     public void RemoveStructure (Structure str)
     {
         structs.Remove(str);
 
-        for (int x = str.x; x < str.x + Mission.Registry.GetData(str.dataID).Width; x++)
-            for (int y = str.y; y < str.y + Mission.Registry.GetData(str.dataID).Height; y++)
+        for (int x = str.x; x < str.x + str.data.Width; x++)
+            for (int y = str.y; y < str.y + str.data.Height; y++)
                 matrix[x, y] = null;
     }
     public Structure GetAtPos(int _x, int _y) => matrix[_x, _y];
@@ -55,36 +55,29 @@ public class Map
     public bool IsEmpty(int _x, int _y, int _width, int _height)
     {
         foreach (var str in structs)
-            if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, Mission.Registry.GetData(str.dataID).Width, Mission.Registry.GetData(str.dataID).Height))
+            if (Utilities.AreOverlapping(_x, _y, _width, _height, str.x, str.y, str.data.Width, str.data.Height))
                 return false;
         return true;
     }
 
     #endregion
 
-    public Structure CreateStructure (int _x, int _y, int _dataID)
+    public Structure CreateStructure (int _x, int _y, StructureData _data)
     {
-        //StructureType data = IndexTable.GetStr(id);
-        StructureData data = Mission.Registry.GetData(_dataID);
-        StructureFactory factory = Mission.Registry.GetFactory(data.factoryID);
+        if (!IsInsideBounds(_x, _y, _data.Width, _data.Height))
+            throw new System.Exception($"Area: {_x}->{_x + _data.Width}, {_y}->{_y + _data.Height} is out of bounds");
+        if (!IsEmpty(_x, _y, _data.Width, _data.Height))
+            throw new System.Exception($"Area: {_x}->{_x + _data.Width}, {_y}->{_y + _data.Height} is not empty");
 
-        if (!IsInsideBounds(_x, _y, data.Width, data.Height))
-            throw new System.Exception($"Area: {_x}->{_x + data.Width}, {_y}->{_y + data.Height} is out of bounds");
-        if (!IsEmpty(_x, _y, data.Width, data.Height))
-            throw new System.Exception($"Area: {_x}->{_x + data.Width}, {_y}->{_y + data.Height} is not empty");
-
-        GameObject go = new GameObject($"{data.Name}: {_x}, {_y}");
+        GameObject go = new GameObject($"{_data.Name}: {_x}, {_y}");
         go.transform.position = new Vector3(_x, _y, 0);
         go.transform.parent = parent;
-        go.AddComponent<SpriteRenderer>().sprite = data.Sprite;
+        go.AddComponent<SpriteRenderer>().sprite = _data.Sprite;
 
-        Structure str = factory.AttachStructure(go);
+        Structure str = go.AddComponent<Structure>();
 
-        str.dataID = _dataID;
-        str.x = _x; str.y = _y;
-
+        str.OnCreate(_x, _y, _data);
         AddStructure(str);
-        str.OnCreate();
 
         return str;
     }

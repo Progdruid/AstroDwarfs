@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropData : StructureData
+public class PropData : TraitData
 {
     public readonly float Range;
 
-    public PropData(string _name, int _width, int _height, Sprite _sprite, float _range, int _id) : base(_name, _width, _height, _sprite, _id)
+    public PropData(string _name, float _range) : base(_name)
     {
         Range = _range;
+    }
+
+    public override Trait CreateThisTrait(Structure _structure)
+    {
+        return new PropTrait(this, _structure);
     }
 }

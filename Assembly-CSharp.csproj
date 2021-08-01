@@ -59,21 +59,21 @@
     <Compile Include="Assets\Scripts\AstroEditor\EditorUI.cs" />
     <Compile Include="Assets\Scripts\Mission.cs" />
     <Compile Include="Assets\Scripts\ITickable.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\PropFactory.cs" />
     <Compile Include="Assets\Scripts\MapConfig.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\Trait.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\ExpanderFactory.cs" />
     <Compile Include="Assets\Scripts\StructureScripts\StructureData.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\TraitData.cs" />
     <Compile Include="Assets\Scripts\StructureScripts\Structure.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\StructureFactory.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\Expander.cs" />
     <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\Editor.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\Prop.cs" />
     <Compile Include="Assets\Scripts\Registry.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\PropData.cs" />
     <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\PropTrait.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\PropData.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\ExpanderData.cs" />
+    <Compile Include="Assets\Scripts\StructureScripts\ExpanderTrait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

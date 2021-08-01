@@ -4,29 +4,8 @@ using UnityEngine;
 
 public class Registry
 {
-    private List<StructureFactory> factories;
     private List<StructureData> datas;
-
-    public int factoryCount => factories.Count;
-    public StructureFactory GetFactory (int _id)
-    {
-        try
-        {
-            return factories[_id];
-        } 
-        catch 
-        {
-            throw new System.Exception("No such factory");
-        }
-    }
-    public int GetFactoryID(StructureFactory _factory)
-    {
-        try
-        {
-            return factories.IndexOf(_factory);
-        }
-        catch { throw new System.Exception("No such factory"); }
-    }
+    private List<TraitData> traitDatas;
 
     public int dataCount => datas.Count;
     public StructureData GetData (int _id)
@@ -49,28 +28,44 @@ public class Registry
         catch { throw new System.Exception("No such structure data"); }
     }
 
+    public int traitDataCount => traitDatas.Count;
+    public TraitData GetTraitData (int _id)
+    {
+        try
+        {
+            return traitDatas[_id];
+        }
+        catch
+        {
+            throw new System.Exception("No such trait data");
+        }
+    }
+    public int GetTraitDataID(TraitData _data)
+    {
+        try
+        {
+            return traitDatas.IndexOf(_data);
+        }
+        catch { throw new System.Exception("No such trait data"); }
+    }
+
 
     public void Init ()
     {
-        InitFactories();
         InitDatas();
-    }
-
-    private void InitFactories ()
-    {
-        factories = new List<StructureFactory>();
-
-        factories.Add(new StructureFactory()); //0
-        factories.Add(new PropFactory());      //1
-        factories.Add(new ExpanderFactory());  //2
     }
 
     private void InitDatas ()
     {
+        traitDatas = new List<TraitData>();
+
+        traitDatas.Add(new PropData("PropTrait", 4.5f)); //0
+        traitDatas.Add(new ExpanderData("RockTrait"));   //1
+
+
         datas = new List<StructureData>();
 
-        object sprite = Resources.Load("Arts/Rock");
-        datas.Add(new StructureData("Rock", 1, 1, Utilities.LoadSprite("Arts/Rock", 10) as Sprite, 2));   //0
-        datas.Add(new PropData("Prop", 1, 1, Utilities.LoadSprite("Arts/Rock", 10) as Sprite, 4.5f, 1));  //1
+        datas.Add(new StructureData("Prop", 1, 1, Utilities.LoadSprite("Arts/Rock", 10), new TraitData[] { traitDatas[0] })); //0
+        datas.Add(new StructureData("Rock", 1, 1, Utilities.LoadSprite("Arts/Rock", 10), new TraitData[] { traitDatas[1] })); //0
     }
 }
