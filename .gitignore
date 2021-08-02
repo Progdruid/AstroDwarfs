@@ -5,6 +5,12 @@ Library/
 Logs/
 UserSettings/
 obj/
+Builds/
 
 # VS
+.vscode/
 .vs/
+
+# Other
+Assets/Scripts/Tester.cs
+Assets/Scripts/Tester.cs.meta
