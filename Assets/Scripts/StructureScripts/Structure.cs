@@ -50,13 +50,13 @@ public class Structure : MonoBehaviour, ITickable
         foreach (var traitData in data.traitDatas)
             AddTrait(traitData);
 
-        Mission.SubscribeTickable(this);
+        Mission.ins.SubscribeTickable(this);
     }
 
     public virtual void Kill()
     {
-        Mission.Map.RemoveStructure(this);
-        Mission.UnsubscribeTickable(this);
+        Mission.ins.Map.RemoveStructure(this);
+        Mission.ins.UnsubscribeTickable(this);
 
         foreach (var trait in traits)
             trait.OnKill();

@@ -19,7 +19,7 @@ public class Map
         matrix = new Structure[Width, Height];
 
         for (int i = 0; i < _config.structCount; i++)
-            CreateStructure(_config.xs[i], _config.ys[i], Mission.Registry.GetData(_config.ids[i]));
+            CreateStructure(_config.xs[i], _config.ys[i], Mission.ins.Registry.GetData(_config.ids[i]));
         
     }
 
@@ -30,20 +30,20 @@ public class Map
 
     public int StrCount => structs.Count;
 
-    public void AddStructure (Structure str)
+    public void AddStructure (Structure _str)
     {
-        structs.Add(str);
+        structs.Add(_str);
 
-        for (int x = str.x; x < str.x + str.data.Width; x++)
-            for (int y = str.y; y < str.y + str.data.Height; y++)
-                matrix[x, y] = str;
+        for (int x = _str.x; x < _str.x + _str.data.Width; x++)
+            for (int y = _str.y; y < _str.y + _str.data.Height; y++)
+                matrix[x, y] = _str;
     }
-    public void RemoveStructure (Structure str)
+    public void RemoveStructure (Structure _str)
     {
-        structs.Remove(str);
+        structs.Remove(_str);
 
-        for (int x = str.x; x < str.x + str.data.Width; x++)
-            for (int y = str.y; y < str.y + str.data.Height; y++)
+        for (int x = _str.x; x < _str.x + _str.data.Width; x++)
+            for (int y = _str.y; y < _str.y + _str.data.Height; y++)
                 matrix[x, y] = null;
     }
     public Structure GetAtPos(int _x, int _y) => matrix[_x, _y];

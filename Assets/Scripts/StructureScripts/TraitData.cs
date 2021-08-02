@@ -9,8 +9,6 @@ public abstract class TraitData
 {
     public readonly string Name;
 
-    public int GetID() => Mission.Registry.GetTraitDataID(this);
-
     public abstract Trait CreateThisTrait(Structure _structure);
 
     public TraitData (string _name)

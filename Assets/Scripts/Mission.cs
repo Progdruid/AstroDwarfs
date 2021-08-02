@@ -3,36 +3,37 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Mission : MonoBehaviour
 {
+    #region public API
+
+    public static Mission ins;
+    public Registry Registry { get; private set; }
+    public Map Map { get; private set; }
+
+    private delegate void TickHandler();
+    private event TickHandler tickEvent;
+    public void SubscribeTickable(ITickable tickable) => tickEvent += tickable.Tick;
+    public void UnsubscribeTickable(ITickable tickable) => tickEvent -= tickable.Tick;
+
+    #endregion
+
+    //private fields
     [SerializeField] string LoadMapName;
     [SerializeField] float TickTime;
     [SerializeField] Transform MapParent;
 
     private float tickTime;
 
-    public static Registry Registry { get; private set; }
-    public static Map Map { get; private set; }
-
-    private delegate void TickHandler();
-    private static event TickHandler tickEvent;
 
     private void Start()
     {
+        ins = this;
+
         Init(LoadMapName);
         Camera.main.GetComponent<CameraMovement>().SetSizes(Map.Width, Map.Height);
 
-    }
-
-    private void Update()
-    {
-        tickTime += Time.deltaTime;
-        if (tickTime >= TickTime)
-        {
-            tickTime = 0f;
-
-            tickEvent();
-        }
     }
 
     private void Init(string loadMapName)
@@ -50,9 +51,14 @@ public class Mission : MonoBehaviour
         Map = new Map(MapParent, config);
     }
 
+    private void Update()
+    {
+        tickTime += Time.deltaTime;
+        if (tickTime >= TickTime)
+        {
+            tickTime = 0f;
 
-    public static void SubscribeTickable(ITickable tickable) => tickEvent += tickable.Tick;
-
-    public static void UnsubscribeTickable(ITickable tickable) => tickEvent -= tickable.Tick;
-
+            tickEvent();
+        }
+    }
 }
