@@ -59,13 +59,26 @@ public class Registry
     {
         traitDatas = new List<TraitData>();
 
-        traitDatas.Add(new PropData("PropTrait", 4.5f)); //0
-        traitDatas.Add(new ExpanderData("RockTrait"));   //1
-
+        traitDatas.Add(new PropData("PropTrait", 4.5f));  //0
+        traitDatas.Add(new ExpanderData("RockTrait"));    //1
+        traitDatas.Add(new HealthData("PropHealth", 20)); //2
 
         datas = new List<StructureData>();
 
-        datas.Add(new StructureData("Prop", 1, 1, Utilities.LoadSprite("Arts/Rock", 10), new TraitData[] { traitDatas[0] })); //0
-        datas.Add(new StructureData("Rock", 1, 1, Utilities.LoadSprite("Arts/Rock", 10), new TraitData[] { traitDatas[1] })); //0
+        //0
+        datas.Add(new StructureData (
+            "Prop",
+            1, 1, 
+            Utilities.LoadSprite("Arts/Rock", 10), 
+            new TraitData[] { traitDatas[0], traitDatas[2] }
+            ));
+        
+        //1
+        datas.Add(new StructureData(
+            "Rock",
+            1, 1,
+            Utilities.LoadSprite("Arts/Rock", 10),
+            new TraitData[] { traitDatas[1] }
+            ));
     }
 }

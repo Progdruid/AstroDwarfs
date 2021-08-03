@@ -1,12 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PropTrait : Trait
 {
     private static List<PropTrait> AllProps;
 
-    public readonly PropData data;
+    private readonly PropData data;
 
     public static bool IsInRange (int x, int y)
     {

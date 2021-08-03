@@ -62,6 +62,6 @@ public class Structure : MonoBehaviour, ITickable
             trait.OnKill();
 
         Destroy(gameObject);
-        Destroy(this);
+        //Destroy(this);
     }
 }
