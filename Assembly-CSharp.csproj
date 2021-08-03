@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{C837F7B6-4567-5637-0EC4-FA122E756ABF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -61,22 +60,22 @@
     <Compile Include="Assets\Scripts\Mission.cs" />
     <Compile Include="Assets\Scripts\ITickable.cs" />
     <Compile Include="Assets\Scripts\MapConfig.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\Trait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\Trait.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\HealthData.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\StructureData.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\TraitData.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\Structure.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\PropData.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\PropTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\HealthData.cs" />
+    <Compile Include="Assets\Scripts\StructureData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TraitData.cs" />
+    <Compile Include="Assets\Scripts\Structure.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\PropData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\PropTrait.cs" />
     <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\Editor.cs" />
     <Compile Include="Assets\Scripts\Registry.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\ExpanderTrait.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\ExpanderData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\ExpanderData.cs" />
     <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
-    <Compile Include="Assets\Scripts\StructureScripts\HealthTrait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

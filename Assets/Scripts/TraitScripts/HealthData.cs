@@ -3,7 +3,7 @@ public class HealthData : TraitData
 {
     public readonly int HP;
 
-    public HealthData(string _name, int _health) : base(_name)
+    public HealthData(int _health)
     {
         HP = _health;
     }

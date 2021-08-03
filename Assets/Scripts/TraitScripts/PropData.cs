@@ -3,7 +3,7 @@ public class PropData : TraitData
 {
     public readonly float Range;
 
-    public PropData(string _name, float _range) : base(_name)
+    public PropData(float _range)
     {
         Range = _range;
     }
