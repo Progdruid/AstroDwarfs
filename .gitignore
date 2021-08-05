@@ -11,6 +11,9 @@ Builds/
 .vscode/
 .vs/
 
+# Formats
+*.meta
+
 # Other
 Assets/Scripts/Tester.cs
-Assets/Scripts/Tester.cs.meta
+

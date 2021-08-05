@@ -40,9 +40,9 @@ public class Registry
         //0
         datas.Add(new StructureData (
             "Prop",
-            1, 1, 
-            Utilities.LoadSprite("Arts/Rock", 10), 
-            new TraitData[] { new PropData(4.5f), new HealthData(20) }
+            2, 2, 
+            Utilities.LoadSprite("Arts/Prop", 10), 
+            new TraitData[] { new PropData(8.5f), new HealthData(20) }
             ));
         
         //1

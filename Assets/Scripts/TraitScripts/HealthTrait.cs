@@ -8,8 +8,7 @@ public class HealthTrait : Trait
 
     public override void Tick()
     {
-        UnityEngine.Debug.Log("HP: " + hp);
-        DealDamage(1);
+
     }
 
     public void DealDamage (int _dmg)

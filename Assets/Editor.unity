@@ -1248,8 +1248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGObj: {fileID: 559769704}
   BgTileSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  Width: 50
-  Height: 100
+  Width: 100
+  Height: 50
   FileName: map.json
 --- !u!4 &1598609633
 Transform:
