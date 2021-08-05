@@ -72,7 +72,6 @@ public class Map
         GameObject go = new GameObject($"{_data.Name}: {_x}, {_y}");
         go.transform.position = new Vector3(_x, _y, 0);
         go.transform.parent = parent;
-        go.AddComponent<SpriteRenderer>().sprite = _data.Sprite;
 
         Structure str = go.AddComponent<Structure>();
 

@@ -28,9 +28,9 @@ public class HealthTrait : Trait
             hp = fullHP;
     }
 
-    public HealthTrait(TraitData _data, Structure _structure) : base(_data, _structure)
+    public HealthTrait(HealthData _data, Structure _structure) : base(_structure)
     {
-        fullHP = ((HealthData)_data).HP;
+        fullHP = _data.HP;
         hp = fullHP;
     }
 }

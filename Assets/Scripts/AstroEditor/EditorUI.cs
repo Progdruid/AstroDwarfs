@@ -13,7 +13,7 @@ public class EditorUI : MonoBehaviour
     {
         List<Dropdown.OptionData> Options = new List<Dropdown.OptionData>();
         for (int i = 0; i < Editor.registry.dataCount; i++)
-            Options.Add(new Dropdown.OptionData(Editor.registry.GetData(i).Name, Editor.registry.GetData(i).Sprite));
+            Options.Add(new Dropdown.OptionData(Editor.registry.GetData(i).Name));
 
         StructureSelect.AddOptions(Options);
     }

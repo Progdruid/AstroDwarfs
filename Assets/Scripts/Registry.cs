@@ -40,17 +40,22 @@ public class Registry
         //0
         datas.Add(new StructureData (
             "Prop",
-            2, 2, 
-            Utilities.LoadSprite("Arts/Prop", 10), 
-            new TraitData[] { new PropData(8.5f), new HealthData(20) }
-            ));
+            2, 2,
+            new TraitData[] {
+                new PropData(8.5f),
+                new HealthData(20),
+                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) }) 
+            }
+        ));
         
         //1
         datas.Add(new StructureData(
             "Rock",
             1, 1,
-            Utilities.LoadSprite("Arts/Rock", 10),
-            new TraitData[] { new ExpanderData() }
-            ));
+            new TraitData[] { 
+                new ExpanderData(), 
+                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Rock", 10) }) 
+            }
+        ));
     }
 }

@@ -14,13 +14,13 @@ public class PropTrait : Trait
         return false;
     }
 
-    public PropTrait(TraitData _data, Structure _structure) : base(_data, _structure) 
+    public PropTrait(PropData _data, Structure _structure) : base(_structure) 
     {
         if (AllProps == null)
             AllProps = new List<PropTrait>();
         AllProps.Add(this);
 
-        data = (PropData)Data;
+        data = _data;
     }
 
     public override void OnKill()

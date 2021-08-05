@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderData.cs" />
     <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\RenderTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\RenderData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

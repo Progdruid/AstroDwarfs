@@ -6,6 +6,6 @@ public class ExpanderData : TraitData
 {
     public override Trait CreateThisTrait(Structure _structure)
     {
-        return new ExpanderTrait(this, _structure);
+        return new ExpanderTrait(_structure);
     }
 }

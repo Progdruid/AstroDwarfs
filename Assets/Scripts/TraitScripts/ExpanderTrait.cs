@@ -7,7 +7,7 @@ public class ExpanderTrait : Trait
 {
     private Map map => Mission.ins.Map;
 
-    public ExpanderTrait(TraitData _data, Structure _structure) : base(_data, _structure) { }
+    public ExpanderTrait(Structure _structure) : base(_structure) { }
 
     public override void Tick ()
     {
