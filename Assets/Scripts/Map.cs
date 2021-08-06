@@ -9,18 +9,9 @@ public class Map
 
     private Transform parent;
 
-    public Map(Transform _parent, MapConfig _config)
+    public Map(Transform _parent)
     {
         parent = _parent;
-
-        Width = _config.width;
-        Height = _config.height;
-        structs = new List<Structure>();
-        matrix = new Structure[Width, Height];
-
-        for (int i = 0; i < _config.structCount; i++)
-            CreateStructure(_config.xs[i], _config.ys[i], Mission.ins.Registry.GetData(_config.ids[i]));
-        
     }
 
     #region Structures API
@@ -75,9 +66,23 @@ public class Map
 
         Structure str = go.AddComponent<Structure>();
 
-        str.OnCreate(_x, _y, _data);
+        str.x = _x; str.y = _y;
+        str.data = _data;
         AddStructure(str);
 
+        str.OnCreate();
+
         return str;
+    }
+
+    public void Init (MapConfig _config)
+    {
+        Width = _config.width;
+        Height = _config.height;
+        structs = new List<Structure>();
+        matrix = new Structure[Width, Height];
+
+        for (int i = 0; i < _config.structCount; i++)
+            CreateStructure(_config.xs[i], _config.ys[i], Mission.ins.Registry.GetData(_config.ids[i]));
     }
 }

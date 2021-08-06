@@ -62,8 +62,10 @@
     <Compile Include="Assets\Scripts\MapConfig.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\Trait.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\RenderData.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthData.cs" />
     <Compile Include="Assets\Scripts\StructureData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\RenderTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TraitData.cs" />
     <Compile Include="Assets\Scripts\Structure.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
@@ -76,8 +78,8 @@
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderData.cs" />
     <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\RenderTrait.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\RenderData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

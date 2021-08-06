@@ -83,7 +83,7 @@ public class Editor : MonoBehaviour
         {
             xs.Add(structures[i].x);
             ys.Add(structures[i].y);
-            ids.Add(i);
+            ids.Add(registry.GetDataID(structures[i].str));
         }
 
         config.xs = xs.ToArray();

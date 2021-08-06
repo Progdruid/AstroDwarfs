@@ -54,7 +54,7 @@ public class Registry
             1, 1,
             new TraitData[] { 
                 new ExpanderData(), 
-                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Rock", 10) }) 
+                new TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
             }
         ));
     }

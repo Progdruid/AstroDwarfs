@@ -33,18 +33,14 @@ public class Structure : MonoBehaviour, ITickable
 
     #endregion
 
-    public virtual void Tick () 
+    public void Tick () 
     {
         foreach (var trait in traits)
             trait.Tick();
     }
 
-    public virtual void OnCreate(int _x, int _y, StructureData _data) 
+    public void OnCreate() 
     {
-        x = _x;
-        y = _y;
-        data = _data;
-
         traits = new List<Trait>();
 
         foreach (var traitData in data.traitDatas)
@@ -53,7 +49,7 @@ public class Structure : MonoBehaviour, ITickable
         Mission.ins.SubscribeTickable(this);
     }
 
-    public virtual void Kill()
+    public void Kill()
     {
         Mission.ins.Map.RemoveStructure(this);
         Mission.ins.UnsubscribeTickable(this);

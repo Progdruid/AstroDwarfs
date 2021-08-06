@@ -48,7 +48,8 @@ public class Mission : MonoBehaviour
         string text = reader.ReadToEnd();
 
         MapConfig config = JsonUtility.FromJson<MapConfig>(text);
-        Map = new Map(MapParent, config);
+        Map = new Map(MapParent);
+        Map.Init(config);
     }
 
     private void Update()
