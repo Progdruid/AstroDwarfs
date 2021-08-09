@@ -11,6 +11,7 @@ public class Mission : MonoBehaviour
     public static Mission ins;
     public Registry Registry { get; private set; }
     public Map Map { get; private set; }
+    public float TickTime => tickTime;
 
     private delegate void TickHandler();
     private event TickHandler tickEvent;
@@ -21,10 +22,10 @@ public class Mission : MonoBehaviour
 
     //private fields
     [SerializeField] string LoadMapName;
-    [SerializeField] float TickTime;
+    [SerializeField] float tickTime;
     [SerializeField] Transform MapParent;
 
-    private float tickTime;
+    private float _tickTime;
 
 
     private void Start()
@@ -54,10 +55,10 @@ public class Mission : MonoBehaviour
 
     private void Update()
     {
-        tickTime += Time.deltaTime;
-        if (tickTime >= TickTime)
+        _tickTime += Time.deltaTime;
+        if (_tickTime >= TickTime)
         {
-            tickTime = 0f;
+            _tickTime = 0f;
 
             tickEvent();
         }

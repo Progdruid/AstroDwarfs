@@ -6,11 +6,22 @@ using UnityEngine;
 public class ExpanderTrait : Trait
 {
     private Map map => Mission.ins.Map;
+    private ExpanderData data;
+    private float cooldown = 0;
 
-    public ExpanderTrait(Structure _structure) : base(_structure) { }
+    public ExpanderTrait(ExpanderData _data, Structure _structure) : base(_structure) 
+    {
+        data = _data;
+    }
 
     public override void Tick ()
     {
+        if (cooldown > 0)
+        {
+            cooldown -= Mission.ins.TickTime;
+            return;
+        }
+
         if (Str.y + 1 + Str.data.Height <= map.Height)
             TryExpand(Str.x, Str.y + 1, Str.data);
         if (Str.x + 1 + Str.data.Width <= map.Width)
@@ -40,5 +51,7 @@ public class ExpanderTrait : Trait
             str.Kill();
             map.CreateStructure(_x, _y, _data);
         }
+
+        cooldown = data.Cooldown;
     }
 }

@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72795734284f8634e9e1833375092f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraSpeed: 0.01
+  CameraSpeed: 0.02
   CameraMinSize: 1
   ZoomSpeed: 0.01
 --- !u!20 &519420031
@@ -296,5 +296,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadMapName: map
-  TickTime: 0.02
+  tickTime: 0
   MapParent: {fileID: 1083954822}

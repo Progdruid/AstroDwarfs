@@ -53,7 +53,7 @@ public class Registry
             "Rock",
             1, 1,
             new TraitData[] { 
-                new ExpanderData(), 
+                new ExpanderData(1), 
                 new TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
             }
         ));
