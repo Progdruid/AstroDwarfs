@@ -159,12 +159,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8baaf50a58dd34dafe420b945ff85c, type: 3}
+  m_Script: {fileID: 11500000, guid: 72795734284f8634e9e1833375092f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraSpeed: 0.01
   CameraMinSize: 1
-  ZoomSpeed: 0.05
+  ZoomSpeed: 0.01
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -262,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1697110742}
   - component: {fileID: 1697110743}
-  - component: {fileID: 1697110744}
   m_Layer: 0
   m_Name: Mission Control
   m_TagString: Untagged
@@ -293,21 +292,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1697110741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792bd9f5cff1c784cbc279986e122605, type: 3}
+  m_Script: {fileID: 11500000, guid: d856a9f5e7f9a6f4baaa903e62ca1f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadMapName: Map
+  LoadMapName: map
   TickTime: 0.02
   MapParent: {fileID: 1083954822}
---- !u!114 &1697110744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697110741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673e615c9fb786a44b59176cef3c3698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

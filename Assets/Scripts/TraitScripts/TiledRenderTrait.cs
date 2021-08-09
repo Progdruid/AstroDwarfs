@@ -25,9 +25,6 @@ public class TiledRenderTrait : RenderTrait
 
     public void CheckConnection ()
     {
-        if (Str.x == 5 && Str.y == 5)
-            ;
-
         bool up = true;
         bool right = true;
         bool down = true;

@@ -91,7 +91,7 @@ public class Editor : MonoBehaviour
         config.ids = ids.ToArray();
 
         string configText = JsonUtility.ToJson(config);
-        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + FileName, FileMode.Create);
+        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + FileName + ".json", FileMode.Create);
         using (StreamWriter writer = new StreamWriter(stream))
         {
             writer.Write(configText);

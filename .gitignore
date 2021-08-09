@@ -13,7 +13,7 @@ Builds/
 
 # Formats
 *.meta
+!*.unity.meta
+!*.png.meta
 
-# Other
-Assets/Scripts/Tester.cs
 

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C837F7B6-4567-5637-0EC4-FA122E756ABF}</ProjectGuid>
+    <ProjectGuid>{371D6997-DE85-8A57-AC30-E2366A3C66B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,30 +56,29 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AstroEditor\EditorUI.cs" />
-    <Compile Include="Assets\Scripts\Mission.cs" />
-    <Compile Include="Assets\Scripts\ITickable.cs" />
-    <Compile Include="Assets\Scripts\MapConfig.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\Trait.cs" />
-    <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\RenderData.cs" />
+    <Compile Include="Assets\Scripts\Map.cs" />
+    <Compile Include="Assets\Scripts\Mission.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\PropTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TraitData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
+    <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
     <Compile Include="Assets\Scripts\StructureData.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\RenderTrait.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\TraitData.cs" />
-    <Compile Include="Assets\Scripts\Structure.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\PropData.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\PropTrait.cs" />
-    <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\Editor.cs" />
-    <Compile Include="Assets\Scripts\Registry.cs" />
-    <Compile Include="Assets\Scripts\Map.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\Trait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderData.cs" />
-    <Compile Include="Assets\Scripts\Utility\Utilities.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderTrait.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\TiledRenderData.cs" />
+    <Compile Include="Assets\Scripts\MapConfig.cs" />
+    <Compile Include="Assets\Scripts\Structure.cs" />
+    <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\AstroEditor\EditorUI.cs" />
+    <Compile Include="Assets\Scripts\Registry.cs" />
+    <Compile Include="Assets\Scripts\ITickable.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
