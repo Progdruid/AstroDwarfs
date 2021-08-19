@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Map
@@ -50,6 +51,25 @@ public class Map
                 return false;
         return true;
     }
+    //needs optimization
+    public Structure TryGetNearest(string[] _names, int _x, int _y)
+    {
+        Structure nearest = null;
+        float nearestDist = float.MaxValue;
+        foreach (Structure str in structs)
+            if (_names.Contains(str.data.Name))
+            {
+                float dist = Mathf.Sqrt((_x - str.x) * (_x - str.x) + (_y - str.y) * (_y - str.y));
+                if (dist < nearestDist)
+                {
+                    nearest = str;
+                    nearestDist = dist;
+                }
+            }
+
+        return nearest;
+    }
+
 
     #endregion
 

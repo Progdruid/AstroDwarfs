@@ -39,19 +39,14 @@ public class ExpanderTrait : Trait
 
         Structure str = map.GetAtPos(_x, _y);
 
-        if (str == null)
-        {
-            map.CreateStructure(_x, _y, _data);
-            return;
-        }
-        if (str.Contains<ExpanderTrait>())
+        if (str != null)
+            if (str.Contains<ExpanderTrait>())
                 return;
-        else
-        {
-            str.Kill();
-            map.CreateStructure(_x, _y, _data);
-        }
+            else
+                str.Kill();
 
+        map.CreateStructure(_x, _y, _data);
         cooldown = data.Cooldown;
+
     }
 }

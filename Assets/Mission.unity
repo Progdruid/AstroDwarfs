@@ -296,5 +296,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadMapName: map
-  tickTime: 0
+  tickTime: 0.02
   MapParent: {fileID: 1083954822}

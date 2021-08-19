@@ -79,6 +79,8 @@
     <Compile Include="Assets\Scripts\Registry.cs" />
     <Compile Include="Assets\Scripts\ITickable.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\DrillerTrait.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\DrillerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
