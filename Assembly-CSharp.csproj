@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\TraitScripts\PropTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TiledRenderTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthData.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\DrillerData.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TraitData.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TiledRenderData.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\ExpanderTrait.cs" />
@@ -77,10 +78,9 @@
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\EditorUI.cs" />
     <Compile Include="Assets\Scripts\Registry.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\DrillerTrait.cs" />
     <Compile Include="Assets\Scripts\ITickable.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\DrillerTrait.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\DrillerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

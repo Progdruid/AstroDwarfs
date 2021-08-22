@@ -53,7 +53,7 @@ public class Registry
             "Rock",
             1, 1,
             new TraitData[] { 
-                new ExpanderData(5), 
+                new ExpanderData(1f), 
                 new TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
             }
         ));
@@ -63,7 +63,7 @@ public class Registry
             "Driller",
             2, 2,
             new TraitData[] {
-                new DrillerData(new string[] { "Rock" }, 5, 9f),
+                new DrillerData(new string[] { "Rock" }, 25, 9f),
                 new HealthData(100),
                 new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) })
             }

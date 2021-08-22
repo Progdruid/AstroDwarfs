@@ -12,6 +12,7 @@ public class ExpanderTrait : Trait
     public ExpanderTrait(ExpanderData _data, Structure _structure) : base(_structure) 
     {
         data = _data;
+        cooldown = data.Cooldown;
     }
 
     public override void Tick ()

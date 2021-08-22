@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DrillerTrait : Trait
@@ -26,7 +27,8 @@ public class DrillerTrait : Trait
 
     public void TryDig ()
     {
-        Structure str = Mission.ins.Map.TryGetNearest(data.AttackTargets, Str.x, Str.y);
+        Structure str = Mission.ins.Map.GetNearestStructure((str) => data.AttackTargets.Contains(str.data.Name), Str.x, Str.y, data.Range);
+        
         if (str == null)
             return;
 

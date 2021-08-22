@@ -15,7 +15,7 @@ public class Map
         parent = _parent;
     }
 
-    #region Structures API
+    #region Structures
 
     private List<Structure> structs;
     private Structure[,] matrix;
@@ -40,6 +40,11 @@ public class Map
     }
     public Structure GetAtPos(int _x, int _y) => matrix[_x, _y];
     public Structure GetAtIndex(int _i) => structs[_i];
+
+    #endregion
+
+    #region Secondary functions
+
     public bool IsInsideBounds(int _x, int _y, int _width, int _height)
     {
         return _x >= 0 && _y >= 0 && _x + _width <= Width && _y + _height <= Height;
@@ -51,25 +56,31 @@ public class Map
                 return false;
         return true;
     }
-    //needs optimization
-    public Structure TryGetNearest(string[] _names, int _x, int _y)
+    public Structure GetNearestStructure(System.Func<Structure, bool> _condition, int _x, int _y, float _range)
     {
-        Structure nearest = null;
-        float nearestDist = float.MaxValue;
-        foreach (Structure str in structs)
-            if (_names.Contains(str.data.Name))
+        for (float curRange = 1f; curRange < _range; curRange += 1f)
+        {
+            decimal curAngleDelta = (decimal)Mathf.PI / (decimal)(curRange * curRange);
+            for (decimal angle = 0; angle < (decimal)Mathf.PI * 2; angle += curAngleDelta)
             {
-                float dist = Mathf.Sqrt((_x - str.x) * (_x - str.x) + (_y - str.y) * (_y - str.y));
-                if (dist < nearestDist)
-                {
-                    nearest = str;
-                    nearestDist = dist;
-                }
+                int x = _x + Mathf.RoundToInt(curRange * Mathf.Cos((float)angle));
+                int y = _y + Mathf.RoundToInt(curRange * Mathf.Sin((float)angle));
+
+                if (x < 0 || y < 0 || x >= Width || y >= Height)
+                    continue;
+
+                Structure str = GetAtPos(x, y);
+                if (str != null)
+                    if (_condition(str))
+                        return str;
             }
 
-        return nearest;
-    }
+            if (_range - curRange < 1)
+                curRange = _range;
+        }
 
+        return null;
+    }
 
     #endregion
 

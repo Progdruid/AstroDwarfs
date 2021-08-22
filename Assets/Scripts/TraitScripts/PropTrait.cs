@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class PropTrait : Trait
 {
-    private static List<PropTrait> AllProps;
+    private static List<PropTrait> AllProps = new List<PropTrait>();
 
     private readonly PropData data;
 
@@ -16,8 +16,6 @@ public class PropTrait : Trait
 
     public PropTrait(PropData _data, Structure _structure) : base(_structure) 
     {
-        if (AllProps == null)
-            AllProps = new List<PropTrait>();
         AllProps.Add(this);
 
         data = _data;
