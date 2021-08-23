@@ -60,7 +60,7 @@ public class Map
     {
         for (float curRange = 1f; curRange < _range; curRange += 1f)
         {
-            decimal curAngleDelta = (decimal)Mathf.PI / (decimal)(curRange * curRange);
+            decimal curAngleDelta = 1m / (decimal)(curRange + 1);
             for (decimal angle = 0; angle < (decimal)Mathf.PI * 2; angle += curAngleDelta)
             {
                 int x = _x + Mathf.RoundToInt(curRange * Mathf.Cos((float)angle));
