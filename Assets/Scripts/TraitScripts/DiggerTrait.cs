@@ -25,18 +25,13 @@ public class DiggerTrait : Trait
         cooldown = 1f / data.DiggingSpeed;
     }
 
-    public void TryDig ()
+    public void TryDig()
     {
         Structure str = Mission.ins.Map.GetNearestStructure((str) => data.AttackTargets.Contains(str.data.Name), Str.x, Str.y, data.Range);
-        
+
         if (str == null)
             return;
 
-        float dist = Mathf.Sqrt((str.x - Str.x) * (str.x - Str.x) + (str.y - Str.y) * (str.y - Str.y));
-        if (dist > data.Range)
-            return;
-
         str.Kill();
-        Debug.Log("Digged: " + (str.x, str.y));
     }
 }
