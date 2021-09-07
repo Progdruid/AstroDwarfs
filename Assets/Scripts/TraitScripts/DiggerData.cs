@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrillerData : TraitData
+public class DiggerData : TraitData
 {
     public readonly string[] AttackTargets;
     public readonly int DiggingSpeed;
     public readonly float Range;
 
-    public DrillerData(string[] _targets, int _diggingSpeed, float _range)
+    public DiggerData(string[] _targets, int _diggingSpeed, float _range)
     {
         AttackTargets = _targets;
         DiggingSpeed = _diggingSpeed;
@@ -17,6 +17,6 @@ public class DrillerData : TraitData
 
     public override Trait CreateThisTrait(Structure _structure)
     {
-        return new DrillerTrait(this, _structure);
+        return new DiggerTrait(this, _structure);
     }
 }

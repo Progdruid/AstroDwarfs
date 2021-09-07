@@ -60,12 +60,12 @@ public class Registry
 
         //2
         datas.Add(new StructureData(
-            "Driller",
+            "Digger",
             2, 2,
             new TraitData[] {
-                new DrillerData(new string[] { "Rock" }, 25, 9f),
+                new DiggerData(new string[] { "Rock" }, 25, 9f),
                 new HealthData(100),
-                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) })
+                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Digger", 10) })
             }
         ));
     }

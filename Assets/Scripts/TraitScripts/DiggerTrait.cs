@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DrillerTrait : Trait
+public class DiggerTrait : Trait
 {
-    private DrillerData data;
+    private DiggerData data;
     private float cooldown = 0;
 
-    public DrillerTrait(DrillerData _data, Structure _structure) : base(_structure)
+    public DiggerTrait(DiggerData _data, Structure _structure) : base(_structure)
     {
         data = _data;
     }
