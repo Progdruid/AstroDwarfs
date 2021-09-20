@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DiggerTrait : Trait
 {
-    private DiggerData data;
+    private TraitDatas.DiggerData data;
     private float cooldown = 0;
 
-    public DiggerTrait(DiggerData _data, Structure _structure) : base(_structure)
+    public DiggerTrait(TraitDatas.DiggerData _data, Structure _structure) : base(_structure)
     {
         data = _data;
     }

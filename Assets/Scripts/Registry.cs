@@ -41,10 +41,10 @@ public class Registry
         datas.Add(new StructureData (
             "Prop",
             2, 2,
-            new TraitData[] {
-                new PropData(8.5f),
-                new HealthData(20),
-                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) }) 
+            new TraitDatas.TraitData[] {
+                new TraitDatas.PropData(8.5f),
+                new TraitDatas.HealthData(20),
+                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) }) 
             }
         ));
         
@@ -52,9 +52,9 @@ public class Registry
         datas.Add(new StructureData(
             "Rock",
             1, 1,
-            new TraitData[] { 
-                new ExpanderData(1f), 
-                new TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
+            new TraitDatas.TraitData[] { 
+                new TraitDatas.ExpanderData(1f), 
+                new TraitDatas.TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
             }
         ));
 
@@ -62,10 +62,10 @@ public class Registry
         datas.Add(new StructureData(
             "Digger",
             2, 2,
-            new TraitData[] {
-                new DiggerData(new string[] { "Rock" }, 25, 9f),
-                new HealthData(100),
-                new RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Digger", 10) })
+            new TraitDatas.TraitData[] {
+                new TraitDatas.DiggerData(new string[] { "Rock" }, 25, 9f),
+                new TraitDatas.HealthData(100),
+                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Digger", 10) })
             }
         ));
     }

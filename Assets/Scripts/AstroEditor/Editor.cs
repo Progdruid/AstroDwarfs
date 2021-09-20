@@ -41,9 +41,9 @@ public class Editor : MonoBehaviour
         GameObject go = new GameObject($"{Selected.Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, -1);
         
-        foreach(TraitData data in Selected.traitDatas)
-            if (data is RenderData)
-                go.AddComponent<SpriteRenderer>().sprite = ((RenderData)data).Sprites[0];
+        foreach(TraitDatas.TraitData data in Selected.traitDatas)
+            if (data is TraitDatas.RenderData)
+                go.AddComponent<SpriteRenderer>().sprite = ((TraitDatas.RenderData)data).Sprites[0];
 
         structures.Add((x, y, Selected, go));
     }

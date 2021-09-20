@@ -6,10 +6,10 @@ using UnityEngine;
 public class ExpanderTrait : Trait
 {
     private Map map => Mission.ins.Map;
-    private ExpanderData data;
+    private TraitDatas.ExpanderData data;
     private float cooldown = 0;
 
-    public ExpanderTrait(ExpanderData _data, Structure _structure) : base(_structure) 
+    public ExpanderTrait(TraitDatas.ExpanderData _data, Structure _structure) : base(_structure) 
     {
         data = _data;
         cooldown = data.Cooldown;

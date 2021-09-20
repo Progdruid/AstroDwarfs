@@ -7,9 +7,9 @@ public class StructureData
     public readonly string Name;
     public readonly int Width, Height;
 
-    public readonly TraitData[] traitDatas;
+    public readonly TraitDatas.TraitData[] traitDatas;
 
-    public StructureData (string _name, int _width, int _height, TraitData[] _traitDatas)
+    public StructureData (string _name, int _width, int _height, TraitDatas.TraitData[] _traitDatas)
     {
         Name = _name;
         Width = _width;

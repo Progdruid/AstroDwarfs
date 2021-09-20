@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TiledRenderTrait : RenderTrait
 {
-    public TiledRenderTrait(RenderData _data, Structure _structure) : base(_data, _structure)
+    public TiledRenderTrait(TraitDatas.RenderData _data, Structure _structure) : base(_data, _structure)
     {
         CheckConnection();
         TickNears();

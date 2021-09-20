@@ -4,7 +4,7 @@ public class PropTrait : Trait
 {
     private static List<PropTrait> AllProps = new List<PropTrait>();
 
-    private readonly PropData data;
+    private readonly TraitDatas.PropData data;
 
     public static bool IsInRange (int x, int y)
     {
@@ -14,7 +14,7 @@ public class PropTrait : Trait
         return false;
     }
 
-    public PropTrait(PropData _data, Structure _structure) : base(_structure) 
+    public PropTrait(TraitDatas.PropData _data, Structure _structure) : base(_structure) 
     {
         AllProps.Add(this);
 

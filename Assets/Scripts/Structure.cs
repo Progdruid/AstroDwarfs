@@ -14,7 +14,7 @@ public class Structure : MonoBehaviour, ITickable
 
     public int traitCount => traits.Count;
     public Trait GetTrait(int _id) => traits[_id];
-    public void AddTrait (TraitData _data) => traits.Add(_data.CreateThisTrait(this));
+    public void AddTrait (TraitDatas.TraitData _data) => traits.Add(_data.CreateThisTrait(this));
     public void RemoveTrait(Trait _trait) => traits.Remove(_trait);
     public T TryFind<T> () where T : Trait
     {
