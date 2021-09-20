@@ -92,4 +92,12 @@ public class TraitDatas
             return new DiggerTrait(this, _structure);
         }
     }
+
+    public class ResourceData : TraitDatas.TraitData
+    {
+        public override Trait CreateThisTrait(Structure _structure)
+        {
+            return new ResourceTrait(_structure);
+        }
+    }
 }

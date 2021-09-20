@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\ITickable.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TraitDatas.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\ResourceTrait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

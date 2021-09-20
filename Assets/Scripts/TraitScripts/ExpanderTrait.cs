@@ -41,7 +41,7 @@ public class ExpanderTrait : Trait
         Structure str = map.GetAtPos(_x, _y);
 
         if (str != null)
-            if (str.Contains<ExpanderTrait>())
+            if (str.Contains<ExpanderTrait>() || str.Contains<ResourceTrait>())
                 return;
             else
                 str.Kill();

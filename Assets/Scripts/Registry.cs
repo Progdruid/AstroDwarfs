@@ -68,5 +68,15 @@ public class Registry
                 new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Digger", 10) })
             }
         ));
+
+        //3
+        datas.Add(new StructureData(
+            "Metal",
+            1, 1,
+            new TraitDatas.TraitData[] {
+                new TraitDatas.ResourceData(),
+                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Rock", 10) })
+            }
+        ));
     }
 }
