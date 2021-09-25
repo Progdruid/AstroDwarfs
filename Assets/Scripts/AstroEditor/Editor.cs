@@ -41,7 +41,7 @@ public class Editor : MonoBehaviour
         GameObject go = new GameObject($"{Selected.Name}: {x}, {y}");
         go.transform.position = new Vector3(x, y, -1);
         
-        foreach(TraitDatas.TraitData data in Selected.traitDatas)
+        foreach(TraitDatas.TraitData data in Selected.TraitDatas)
             if (data is TraitDatas.RenderData)
                 go.AddComponent<SpriteRenderer>().sprite = ((TraitDatas.RenderData)data).Sprites[0];
 
@@ -91,7 +91,7 @@ public class Editor : MonoBehaviour
         config.ids = ids.ToArray();
 
         string configText = JsonUtility.ToJson(config);
-        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + FileName + ".json", FileMode.Create);
+        FileStream stream = new FileStream(Application.dataPath + "/Congigs/" + FileName + ".json", FileMode.Create);
         using (StreamWriter writer = new StreamWriter(stream))
         {
             writer.Write(configText);

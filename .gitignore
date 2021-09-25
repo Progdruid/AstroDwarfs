@@ -16,4 +16,7 @@ Builds/
 !*.unity.meta
 !*.png.meta
 
-
+# Files
+Tester.cs
+TestScene.unity
+TestScene.unity.meta

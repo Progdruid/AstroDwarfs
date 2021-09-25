@@ -43,7 +43,7 @@ public class Structure : MonoBehaviour, ITickable
     {
         traits = new List<Trait>();
 
-        foreach (var traitData in data.traitDatas)
+        foreach (var traitData in data.TraitDatas)
             AddTrait(traitData);
 
         Mission.ins.SubscribeTickable(this);

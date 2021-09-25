@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class Registry
 {
@@ -27,56 +29,55 @@ public class Registry
         catch { throw new System.Exception("No such structure data"); }
     }
 
+    private Dictionary<string, TraitFactories.TraitFactory> factories;
+
+    private StructureConfig[] LoadStructureConfigs ()
+    {
+        StructureConfig[] configs;
+
+        FileStream stream = new FileStream(Application.dataPath + "/Configs/StructuresConfig.json", FileMode.OpenOrCreate);
+        
+        using (StreamReader reader = new StreamReader(stream))
+        {
+            string text = reader.ReadToEnd();
+            configs = (StructureConfig[])JsonConvert.DeserializeObject(text, typeof(StructureConfig[]));
+        }
+
+        return configs;
+    }
 
     public void Init ()
     {
-        InitDatas();
+        InitFactories();
+        InitDatas(LoadStructureConfigs());
     }
 
-    private void InitDatas ()
+    private void InitDatas (StructureConfig[] _configs)
     {
         datas = new List<StructureData>();
 
-        //0
-        datas.Add(new StructureData (
-            "Prop",
-            2, 2,
-            new TraitDatas.TraitData[] {
-                new TraitDatas.PropData(8.5f),
-                new TraitDatas.HealthData(20),
-                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Prop", 10) }) 
+        foreach(StructureConfig config in _configs)
+        {
+            TraitDatas.TraitData[] traitDatas = new TraitDatas.TraitData[config.Traits.Length];
+            for (int i = 0; i < config.Traits.Length; i++)
+            {
+                factories.TryGetValue(config.Traits[i].traitName, out TraitFactories.TraitFactory factory);
+                traitDatas[i] = factory.CreateTraitData(config.Traits[i].args);
             }
-        ));
-        
-        //1
-        datas.Add(new StructureData(
-            "Rock",
-            1, 1,
-            new TraitDatas.TraitData[] { 
-                new TraitDatas.ExpanderData(1f), 
-                new TraitDatas.TiledRenderData( Utilities.LoadSlicedSet("Arts/RockSet", 10)) 
-            }
-        ));
+            datas.Add(new StructureData(config.Name, config.Width, config.Height, traitDatas));
+        }
+    }
 
-        //2
-        datas.Add(new StructureData(
-            "Digger",
-            2, 2,
-            new TraitDatas.TraitData[] {
-                new TraitDatas.DiggerData(new string[] { "Rock" }, 25, 9f),
-                new TraitDatas.HealthData(100),
-                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Digger", 10) })
-            }
-        ));
+    public void InitFactories ()
+    {
+        factories = new Dictionary<string, TraitFactories.TraitFactory>();
 
-        //3
-        datas.Add(new StructureData(
-            "Metal",
-            1, 1,
-            new TraitDatas.TraitData[] {
-                new TraitDatas.ResourceData(),
-                new TraitDatas.RenderData(new Sprite[]{ Utilities.LoadSprite("Arts/Rock", 10) })
-            }
-        ));
+        factories.Add("DiggerTrait", new TraitFactories.DiggerFactory());
+        factories.Add("ExpanderTrait", new TraitFactories.ExpanderFactory());
+        factories.Add("HealthTrait", new TraitFactories.HealthFactory());
+        factories.Add("PropTrait", new TraitFactories.PropFactory());
+        factories.Add("RenderTrait", new TraitFactories.RenderFactory());
+        factories.Add("TiledRenderTrait", new TraitFactories.TiledRenderFactory());
+        factories.Add("ResourceTrait", new TraitFactories.ResourceFactory());
     }
 }

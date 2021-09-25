@@ -44,7 +44,7 @@ public class Mission : MonoBehaviour
 
         //tickables = new List<ITickable>();
 
-        FileStream stream = new FileStream(Application.dataPath + "/Maps/" + loadMapName + ".json", FileMode.OpenOrCreate);
+        FileStream stream = new FileStream(Application.dataPath + "/Configs/" + loadMapName + ".json", FileMode.OpenOrCreate);
         StreamReader reader = new StreamReader(stream);
         string text = reader.ReadToEnd();
 

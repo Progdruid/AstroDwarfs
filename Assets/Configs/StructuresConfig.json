@@ -1,0 +1,70 @@
+[
+  {
+    "Name": "Prop",
+    "Width": 2,
+    "Height": 2,
+    "Traits": [
+      {
+        "Item1": "PropTrait",
+        "Item2": { "Range": 8.5 }
+      },
+      {
+        "Item1": "HealthTrait",
+        "Item2": { "Health": 20 }
+      },
+      {
+        "Item1": "RenderTrait",
+        "Item2": { "Path": "Arts/Prop" }
+      }
+    ]
+  },
+  {
+    "Name": "Rock",
+    "Width": 1,
+    "Height": 1,
+    "Traits": [
+      {
+        "Item1": "ExpanderTrait",
+        "Item2": { "Cooldown": 1.0 }
+      },
+      {
+        "Item1": "TiledRenderTrait",
+        "Item2": { "Path": "Arts/RockSet" }
+      }
+    ]
+  },
+  {
+    "Name": "Digger",
+    "Width": 2,
+    "Height": 2,
+    "Traits": [
+      {
+        "Item1": "DiggerTrait",
+        "Item2": { "Targets": [ "Rock" ], "DiggingSpeed": 25, "Range": 9.0 }
+      },
+      {
+        "Item1": "HealthTrait",
+        "Item2": { "Health": 100 }
+      },
+      {
+        "Item1": "RenderTrait",
+        "Item2": { "Path": "Arts/Digger" }
+      }
+    ]
+  },
+  {
+    "Name": "Metal",
+    "Width": 1,
+    "Height": 1,
+    "Traits": [
+      {
+        "Item1": "RenderTrait",
+        "Item2": { "Path": "Arts/Rock" }
+      },
+      {
+        "Item1": "ResourceTrait",
+        "Item2": {}
+      }
+    ]
+  }
+]
