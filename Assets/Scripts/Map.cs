@@ -92,7 +92,11 @@ public class Map
             throw new System.Exception($"Area: {_x}->{_x + _data.Width}, {_y}->{_y + _data.Height} is not empty");
 
         GameObject go = new GameObject($"{_data.Name}: {_x}, {_y}");
-        go.transform.position = new Vector3(_x, _y, 0);
+        
+        //the game is isometric, so we need layering by z coord
+        float zLayer = 1f * ((float)_y / Height);
+        
+        go.transform.position = new Vector3(_x, _y, zLayer);
         go.transform.parent = parent;
 
         Structure str = go.AddComponent<Structure>();

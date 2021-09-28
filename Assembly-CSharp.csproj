@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\StructureConfig.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\Scripts\Mission.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\PropTrait.cs" />
@@ -67,7 +68,9 @@
     <Compile Include="Assets\Scripts\TraitScripts\RenderTrait.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\Editor.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\Trait.cs" />
+    <Compile Include="Assets\Scripts\Tester.cs" />
     <Compile Include="Assets\Scripts\MapConfig.cs" />
+    <Compile Include="Assets\Scripts\TraitScripts\TraitFactories.cs" />
     <Compile Include="Assets\Scripts\Structure.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\AstroEditor\EditorUI.cs" />
@@ -76,9 +79,6 @@
     <Compile Include="Assets\Scripts\ITickable.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\HealthTrait.cs" />
     <Compile Include="Assets\Scripts\TraitScripts\TraitDatas.cs" />
-    <Compile Include="Assets\Scripts\TraitScripts\TraitFactories.cs" />
-    <Compile Include="Assets\Scripts\StructureConfig.cs" />
-    <Compile Include="Assets\Scripts\Tester.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Libs\Newtonsoft.Json.dll" />
