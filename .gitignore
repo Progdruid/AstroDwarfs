@@ -7,16 +7,20 @@ UserSettings/
 obj/
 Builds/
 
-# VS
-.vscode/
-.vs/
-
-# Formats
 *.meta
 !*.unity.meta
 !*.png.meta
 
-# Files
+
+# VS
+.vscode/
+.vs/
+*.csproj
+*.sln
+
+
+# Other Files
 Tester.cs
 TestScene.unity
 TestScene.unity.meta
+
