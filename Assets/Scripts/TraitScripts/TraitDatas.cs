@@ -93,11 +93,35 @@ public class TraitDatas
         }
     }
 
-    public class ResourceData : TraitDatas.TraitData
+    public class VeinData : TraitDatas.TraitData
     {
+        public readonly string ResourceName;
+
+        public VeinData (string _resourceName)
+        {
+            ResourceName = _resourceName;
+        }
+
         public override Trait CreateThisTrait(Structure _structure)
         {
-            return new ResourceTrait(_structure);
+            return new VeinTrait(_structure);
+        }
+    }
+
+    public class MinerData : TraitData
+    {
+        public readonly int MineRate;
+        public readonly float Range;
+
+        public MinerData (int _efficiency, float _range)
+        {
+            MineRate = _efficiency;
+            Range = _range;
+        }
+
+        public override Trait CreateThisTrait(Structure _structure)
+        {
+            return new MinerTrait(this, _structure);
         }
     }
 }

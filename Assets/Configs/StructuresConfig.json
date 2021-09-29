@@ -40,7 +40,7 @@
     "Traits": [
       {
         "Item1": "DiggerTrait",
-        "Item2": { "Targets": [ "Rock" ], "DiggingSpeed": 25, "Range": 9.0 }
+        "Item2": { "Targets": [ "Rock" ], "DiggingSpeed": 50, "Range": 9.0 }
       },
       {
         "Item1": "HealthTrait",
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "Name": "Cobalt",
+    "Name": "CobaltVein",
     "Width": 2,
     "Height": 2,
     "Traits": [
@@ -62,8 +62,27 @@
         "Item2": { "Path": "Arts/CobaltOre" }
       },
       {
-        "Item1": "ResourceTrait",
-        "Item2": {}
+        "Item1": "VeinTrait",
+        "Item2": { "ResourceName": "Cobalt" }
+      }
+    ]
+  }, 
+  {
+    "Name": "Miner",
+    "Width": 2,
+    "Height": 2,
+    "Traits": [
+      {
+        "Item1": "RenderTrait",
+        "Item2": { "Path": "Arts/Digger" }
+      },
+      {
+        "Item1": "HealthTrait",
+        "Item2": { "Health": 100 }
+      },
+      {
+        "Item1": "MinerTrait",
+        "Item2": { "MineRate": 1, "Range": 2.0 }
       }
     ]
   }

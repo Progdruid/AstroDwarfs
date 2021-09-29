@@ -74,11 +74,22 @@ public class TraitFactories
         }
     }
 
-    public class ResourceFactory : TraitFactory
+    public class VeinFactory : TraitFactory
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            return new TraitDatas.ResourceData();
+            _params.TryGetValue("ResourceName", out object _name);
+            return new TraitDatas.VeinData(_name.ToString());
+        }
+    }
+
+    public class MinerFactory : TraitFactory
+    {
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        {
+            _params.TryGetValue("MineRate", out object _efficiency);
+            _params.TryGetValue("Range", out object _range);
+            return new TraitDatas.MinerData(Convert.ToInt32(_efficiency), (float)(double)_range);
         }
     }
 }
