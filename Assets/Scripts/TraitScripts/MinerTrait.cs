@@ -19,7 +19,11 @@ public class MinerTrait : Trait
     {
         bool found = VeinTrait.TryGetNearestAndNotOccupiedInRange(Str.x, Str.y, data.Range, out resource);
         if (found)
+        {
             resource.SetMiner(this);
+            var render = Str.TryFind<StateRenderTrait>();
+            render.TryChangeState("Mining");
+        }
         return found;
     }
 
