@@ -78,6 +78,7 @@ public class Registry
         factories.Add("PropTrait", new TraitFactories.PropFactory());
         factories.Add("SimpleRenderTrait", new TraitFactories.SimpleRenderFactory());
         factories.Add("TiledRenderTrait", new TraitFactories.TiledRenderFactory());
+        factories.Add("StateRenderTrait", new TraitFactories.StateRenderFactory());
         factories.Add("VeinTrait", new TraitFactories.VeinFactory());
         factories.Add("MinerTrait", new TraitFactories.MinerFactory());
     }

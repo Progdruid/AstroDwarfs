@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public class TraitFactories    
 {
@@ -46,6 +47,26 @@ public class TraitFactories
         {
             _params.TryGetValue("Path", out object path);
             return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, 10));
+        }
+    }
+
+    public class StateRenderFactory : TraitFactory
+    {
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        {
+            _params.TryGetValue("SpriteStates", out object objdict);
+            object[] objarr = (objdict as IEnumerable<object>).ToArray();
+
+            Dictionary<string, Sprite> dict = new Dictionary<string, Sprite>(); 
+            foreach (object kvp in objarr)
+            {
+                string str = kvp.ToString();
+                string[] arr = str.Split(':');
+                arr[0] = arr[0].Trim(new char[] { '"' } );
+                arr[1] = arr[1].Trim(new char[] { '"', ' ' });
+                dict.Add(arr[0], Utilities.LoadSprite(arr[1], 10));
+            }
+            return new TraitDatas.StateRenderData(dict);
         }
     }
 

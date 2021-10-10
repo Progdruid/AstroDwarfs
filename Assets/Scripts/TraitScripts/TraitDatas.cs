@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using System.Linq;
 public class TraitDatas
 {
     public abstract class TraitData
@@ -38,6 +38,24 @@ public class TraitDatas
         public override Trait CreateThisTrait(Structure _structure)
         {
             return new TiledRenderTrait(this, _structure);
+        }
+    }
+
+    public class StateRenderData : RenderData
+    {
+        public readonly Dictionary<string, Sprite> SpriteStates;
+        public readonly string DefaultState;
+
+        public StateRenderData (Dictionary<string, Sprite> _spriteStates)
+        {
+            MainSprite = _spriteStates.ToArray()[0].Value;
+            DefaultState = _spriteStates.ToArray()[0].Key;
+            SpriteStates = _spriteStates;
+        }
+
+        public override Trait CreateThisTrait(Structure _structure)
+        {
+            return new StateRenderTrait(this, _structure);
         }
     }
 
@@ -138,6 +156,5 @@ public class TraitDatas
             return new MinerTrait(this, _structure);
         }
     }
-
 
 }

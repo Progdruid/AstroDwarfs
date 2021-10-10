@@ -73,8 +73,8 @@
     "Height": 2,
     "Traits": [
       {
-        "Item1": "SimpleRenderTrait",
-        "Item2": { "Path": "Arts/Digger" }
+        "Item1": "StateRenderTrait",
+        "Item2": { "SpriteStates": { "Staying": "Arts/Prop", "Mining": "Arts/Digger" } }
       },
       {
         "Item1": "HealthTrait",
