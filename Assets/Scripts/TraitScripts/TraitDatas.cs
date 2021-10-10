@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class TraitDatas
 {
@@ -7,27 +8,40 @@ public class TraitDatas
         public abstract Trait CreateThisTrait(Structure _structure);
     }
 
-    public class RenderData : TraitDatas.TraitData
-    {
-        public readonly Sprite[] Sprites;
+    #region Render
 
-        public RenderData(Sprite[] _sprites) => Sprites = _sprites;
+    public abstract class RenderData : TraitDatas.TraitData
+    {
+        public Sprite MainSprite { get; protected set; }
+    }
+
+    public class SimpleRenderData : RenderData
+    {
+        public SimpleRenderData(Sprite _sprite) => MainSprite = _sprite;
 
         public override Trait CreateThisTrait(Structure _structure)
         {
-            return new RenderTrait(this, _structure);
+            return new SimpleRenderTrait(this, _structure);
         }
     }
 
     public class TiledRenderData : TraitDatas.RenderData
     {
-        public TiledRenderData(Sprite[] _sprites) : base(_sprites) { }
+        public readonly Sprite[] SpriteSet;
+
+        public TiledRenderData(Sprite[] _sprites) 
+        {
+            MainSprite = _sprites[0];
+            SpriteSet = _sprites;
+        }
 
         public override Trait CreateThisTrait(Structure _structure)
         {
             return new TiledRenderTrait(this, _structure);
         }
     }
+
+    #endregion
 
     public class PropData : TraitDatas.TraitData
     {
@@ -124,4 +138,6 @@ public class TraitDatas
             return new MinerTrait(this, _structure);
         }
     }
+
+
 }

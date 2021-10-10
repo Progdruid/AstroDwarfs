@@ -12,16 +12,25 @@ public class MinerTrait : Trait
     {
         data = _data;
 
+        TryOccupate();
+    }
+
+    private bool TryOccupate()
+    {
         bool found = VeinTrait.TryGetNearestAndNotOccupiedInRange(Str.x, Str.y, data.Range, out resource);
         if (found)
             resource.SetMiner(this);
+        return found;
     }
 
     public override void Tick()
     {
         if (resource == null)
+        {
+            TryOccupate();
             return;
+        }
 
-        //mining resources
+        Debug.Log("mining resources");
     }
 }

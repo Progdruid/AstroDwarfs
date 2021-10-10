@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TiledRenderTrait : RenderTrait
+public class TiledRenderTrait : Trait
 {
-    public TiledRenderTrait(TraitDatas.RenderData _data, Structure _structure) : base(_data, _structure)
+    public readonly Sprite[] SpriteSet;
+
+    public TiledRenderTrait(TraitDatas.TiledRenderData _data, Structure _structure) : base(_structure)
     {
+        SpriteSet = _data.SpriteSet;
+        Str.gameObject.AddComponent<SpriteRenderer>();
+
         CheckConnection();
         TickNears();
     }
@@ -35,6 +40,6 @@ public class TiledRenderTrait : RenderTrait
         try { left = Mission.ins.Map.GetAtPos(Str.x - 1, Str.y).data.Name != Str.data.Name; } catch { }
 
         int id = (up ? 1 : 0) + (right ? 1 : 0) * 2 + (down ? 1 : 0) * 4 + (left ? 1 : 0) * 8;
-        Str.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[id];
+        Str.gameObject.GetComponent<SpriteRenderer>().sprite = SpriteSet[id];
     }
 }

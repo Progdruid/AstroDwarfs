@@ -13,7 +13,7 @@
         "Item2": { "Health": 20 }
       },
       {
-        "Item1": "RenderTrait",
+        "Item1": "SimpleRenderTrait",
         "Item2": { "Path": "Arts/Prop" }
       }
     ]
@@ -47,7 +47,7 @@
         "Item2": { "Health": 100 }
       },
       {
-        "Item1": "RenderTrait",
+        "Item1": "SimpleRenderTrait",
         "Item2": { "Path": "Arts/Digger" }
       }
     ]
@@ -58,7 +58,7 @@
     "Height": 2,
     "Traits": [
       {
-        "Item1": "RenderTrait",
+        "Item1": "SimpleRenderTrait",
         "Item2": { "Path": "Arts/CobaltOre" }
       },
       {
@@ -73,7 +73,7 @@
     "Height": 2,
     "Traits": [
       {
-        "Item1": "RenderTrait",
+        "Item1": "SimpleRenderTrait",
         "Item2": { "Path": "Arts/Digger" }
       },
       {

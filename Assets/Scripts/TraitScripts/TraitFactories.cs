@@ -29,12 +29,14 @@ public class TraitFactories
         }
     }
 
-    public class RenderFactory : TraitFactory
+    #region Render
+    
+    public class SimpleRenderFactory : TraitFactory
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
             _params.TryGetValue("Path", out object path);
-            return new TraitDatas.RenderData(new Sprite[] { Utilities.LoadSprite((string)path, 10) });
+            return new TraitDatas.SimpleRenderData( Utilities.LoadSprite((string)path, 10) );
         }
     }
 
@@ -46,6 +48,8 @@ public class TraitFactories
             return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, 10));
         }
     }
+
+    #endregion
 
     public class ExpanderFactory : TraitFactory
     {

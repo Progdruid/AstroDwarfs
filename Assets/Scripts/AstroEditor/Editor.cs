@@ -43,7 +43,7 @@ public class Editor : MonoBehaviour
         
         foreach(TraitDatas.TraitData data in Selected.TraitDatas)
             if (data is TraitDatas.RenderData)
-                go.AddComponent<SpriteRenderer>().sprite = ((TraitDatas.RenderData)data).Sprites[0];
+                go.AddComponent<SpriteRenderer>().sprite = ((TraitDatas.RenderData)data).MainSprite;
 
         structures.Add((x, y, Selected, go));
     }
