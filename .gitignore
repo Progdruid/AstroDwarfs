@@ -6,6 +6,7 @@ Logs/
 UserSettings/
 obj/
 Builds/
+Packages/
 
 *.meta
 !*.unity.meta
