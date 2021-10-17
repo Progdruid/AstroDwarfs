@@ -9,10 +9,13 @@ public class Mission : MonoBehaviour
     #region public API
 
     public static Mission ins;
-    public Registry Registry { get; private set; }
-    public Map Map { get; private set; }
-    public float TickTime => tickTime;
 
+    public Registry Registry;
+    public Map Map;
+    public MissionInfo MissionInfo;
+
+    public float tickTime;
+    
     private delegate void TickHandler();
     private event TickHandler tickEvent;
     public void SubscribeTickable(ITickable tickable) => tickEvent += tickable.Tick;
@@ -20,9 +23,8 @@ public class Mission : MonoBehaviour
 
     #endregion
 
-    //private fields
+    //inspector fields
     [SerializeField] string LoadMapName;
-    [SerializeField] float tickTime;
     [SerializeField] Transform MapParent;
 
     private float _tickTime;
@@ -40,10 +42,9 @@ public class Mission : MonoBehaviour
     private void Init(string loadMapName)
     {
         Registry = new Registry();
-        Registry.Init();
+        MissionInfo = new MissionInfo();
 
-        //tickables = new List<ITickable>();
-
+        //mapconfig
         FileStream stream = new FileStream(Application.dataPath + "/Configs/" + loadMapName + ".json", FileMode.OpenOrCreate);
         StreamReader reader = new StreamReader(stream);
         string text = reader.ReadToEnd();
@@ -56,7 +57,7 @@ public class Mission : MonoBehaviour
     private void Update()
     {
         _tickTime += Time.deltaTime;
-        if (_tickTime >= TickTime)
+        if (_tickTime >= tickTime)
         {
             _tickTime = 0f;
 

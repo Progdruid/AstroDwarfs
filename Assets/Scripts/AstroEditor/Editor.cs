@@ -118,6 +118,5 @@ public class Editor : MonoBehaviour
     private void Awake()
     {
         registry = new Registry();
-        registry.Init();
     }
 }

@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class VeinTrait : Trait
 {
+    public readonly TraitDatas.VeinData data;
+
     //static
-    private static List<VeinTrait> resources = new List<VeinTrait>();
-    public static bool TryGetNearestAndNotOccupiedInRange (int _x, int _y, float _range, out VeinTrait _resource)
+    private static List<VeinTrait> veins = new List<VeinTrait>();
+    public static bool TryGetNearestAndNotOccupiedInRange (int _x, int _y, float _range, out VeinTrait _vein)
     {
-        _resource = null;
+        _vein = null;
         float prevsqdist = 0f;
-        foreach(VeinTrait resource in resources)
+        foreach(VeinTrait vein in veins)
         {
-            float sqdist = (resource.Str.x - _x) * (resource.Str.x - _x) + (resource.Str.y - _y) * (resource.Str.y - _y);
+            float sqdist = (vein.Str.x - _x) * (vein.Str.x - _x) + (vein.Str.y - _y) * (vein.Str.y - _y);
             if (sqdist > _range * _range)
                 continue;
             if (prevsqdist >= sqdist)
                 continue;
 
-            _resource = resource;
+            _vein = vein;
             prevsqdist = sqdist;
         }
 
-        return _resource != null && !_resource.IsOccupied;
+        return _vein != null && !_vein.IsOccupied;
     }
 
 
@@ -37,14 +39,15 @@ public class VeinTrait : Trait
 
 
     //Other
-    public VeinTrait(Structure _structure) : base(_structure)
+    public VeinTrait(TraitDatas.VeinData _data, Structure _structure) : base(_structure)
     {
-        resources.Add(this);
+        veins.Add(this);
+        data = _data;
     }
 
     public override void OnKill()
     {
-        resources.Remove(this);
+        veins.Remove(this);
         base.OnKill();
     }
 }

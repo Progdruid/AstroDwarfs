@@ -5,8 +5,8 @@ using UnityEngine;
 public class MinerTrait : Trait
 {
     private readonly TraitDatas.MinerData data;
-
-    private VeinTrait resource;
+    private VeinTrait vein;
+    private MissionInfo msInfo = Mission.ins.MissionInfo;
 
     public MinerTrait(TraitDatas.MinerData _data, Structure _structure) : base(_structure)
     {
@@ -17,10 +17,10 @@ public class MinerTrait : Trait
 
     private bool TryOccupate()
     {
-        bool found = VeinTrait.TryGetNearestAndNotOccupiedInRange(Str.x, Str.y, data.Range, out resource);
+        bool found = VeinTrait.TryGetNearestAndNotOccupiedInRange(Str.x, Str.y, data.Range, out vein);
         if (found)
         {
-            resource.SetMiner(this);
+            vein.SetMiner(this);
             var render = Str.TryFind<StateRenderTrait>();
             render.TryChangeState("Mining");
         }
@@ -29,12 +29,12 @@ public class MinerTrait : Trait
 
     public override void Tick()
     {
-        if (resource == null)
+        if (vein == null)
         {
             TryOccupate();
             return;
         }
 
-        Debug.Log("mining resources");
+        msInfo.Resources[vein.data.ResourceName] += (decimal)vein.data.MineRate * (decimal)Mission.ins.tickTime;
     }
 }

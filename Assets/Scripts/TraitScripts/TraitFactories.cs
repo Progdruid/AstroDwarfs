@@ -15,7 +15,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Health", out object health);
+            object health = _params["Health"];
 
             return new TraitDatas.HealthData(Convert.ToInt32(health));
         }
@@ -25,7 +25,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Range", out object range);
+            object range = _params["Range"];
             return new TraitDatas.PropData((float)(double)range);
         }
     }
@@ -36,7 +36,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Path", out object path);
+            object path = _params["Path"];
             return new TraitDatas.SimpleRenderData( Utilities.LoadSprite((string)path, 10) );
         }
     }
@@ -45,7 +45,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Path", out object path);
+            object path = _params["Path"];
             return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, 10));
         }
     }
@@ -54,7 +54,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("SpriteStates", out object objdict);
+            object objdict = _params["SpriteStates"];
             object[] objarr = (objdict as IEnumerable<object>).ToArray();
 
             Dictionary<string, Sprite> dict = new Dictionary<string, Sprite>(); 
@@ -76,7 +76,7 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Cooldown", out object cooldown);
+            object cooldown = _params["Cooldown"];
             return new TraitDatas.ExpanderData((float)(double)cooldown);
         }
     }
@@ -85,9 +85,9 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("Targets", out object targets);
-            _params.TryGetValue("DiggingSpeed", out object diggingSpeed);
-            _params.TryGetValue("Range", out object range);
+            object targets = _params["Targets"];
+            object diggingSpeed =_params["DiggingSpeed"];
+            object range = _params["Range"];
             List<string> _targets = new List<string>();
             foreach(object objTarget in targets as IEnumerable<object>)
             {
@@ -103,8 +103,9 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("ResourceName", out object _name);
-            return new TraitDatas.VeinData(_name.ToString());
+            object _name = _params["ResourceName"];
+            object _mineRate = _params["MineRate"];
+            return new TraitDatas.VeinData(_name.ToString(), (double)_mineRate);
         }
     }
 
@@ -112,9 +113,8 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
-            _params.TryGetValue("MineRate", out object _efficiency);
-            _params.TryGetValue("Range", out object _range);
-            return new TraitDatas.MinerData(Convert.ToInt32(_efficiency), (float)(double)_range);
+            object _range = _params["Range"];
+            return new TraitDatas.MinerData((float)(double)_range);
         }
     }
 }

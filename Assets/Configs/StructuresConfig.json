@@ -63,7 +63,7 @@
       },
       {
         "Item1": "VeinTrait",
-        "Item2": { "ResourceName": "Cobalt" }
+        "Item2": { "ResourceName": "Cobalt", "MineRate": 1.0 }
       }
     ]
   }, 
@@ -82,7 +82,7 @@
       },
       {
         "Item1": "MinerTrait",
-        "Item2": { "MineRate": 1, "Range": 2.0 }
+        "Item2": { "Range": 2.0 }
       }
     ]
   }

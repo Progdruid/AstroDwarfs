@@ -128,26 +128,25 @@ public class TraitDatas
     public class VeinData : TraitDatas.TraitData
     {
         public readonly string ResourceName;
-
-        public VeinData (string _resourceName)
+        public readonly double MineRate;
+        public VeinData (string _resourceName, double _mineRate)
         {
             ResourceName = _resourceName;
+            MineRate = _mineRate;
         }
 
         public override Trait CreateThisTrait(Structure _structure)
         {
-            return new VeinTrait(_structure);
+            return new VeinTrait(this, _structure);
         }
     }
 
     public class MinerData : TraitData
     {
-        public readonly int MineRate;
         public readonly float Range;
 
-        public MinerData (int _efficiency, float _range)
+        public MinerData (float _range)
         {
-            MineRate = _efficiency;
             Range = _range;
         }
 

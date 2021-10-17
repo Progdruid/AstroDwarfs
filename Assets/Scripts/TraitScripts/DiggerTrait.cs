@@ -17,7 +17,7 @@ public class DiggerTrait : Trait
     {
         if (cooldown > 0)
         {
-            cooldown -= Mission.ins.TickTime;
+            cooldown -= Mission.ins.tickTime;
             return;
         }
 

@@ -46,7 +46,7 @@ public class Registry
         return configs;
     }
 
-    public void Init ()
+    public Registry ()
     {
         InitFactories();
         InitDatas(LoadStructureConfigs());
