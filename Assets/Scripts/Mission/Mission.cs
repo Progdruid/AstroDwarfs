@@ -30,7 +30,7 @@ public class Mission : MonoBehaviour
     private float _tickTime;
 
 
-    private void Start()
+    private void Awake()
     {
         ins = this;
 
