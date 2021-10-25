@@ -43,6 +43,9 @@ public class VeinTrait : Trait
     {
         veins.Add(this);
         data = _data;
+
+        if (!Mission.ins.MissionInfo.ContainsRes(data.ResourceName))
+            Mission.ins.MissionInfo.AddRes(data.ResourceName, 0);
     }
 
     public override void OnKill()

@@ -37,7 +37,8 @@ public class TraitFactories
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
             object path = _params["Path"];
-            return new TraitDatas.SimpleRenderData( Utilities.LoadSprite((string)path, 10) );
+            object ppu = _params["PixelsPerUnit"];
+            return new TraitDatas.SimpleRenderData( Utilities.LoadSprite((string)path, Convert.ToInt32(ppu)) );
         }
     }
 
@@ -46,7 +47,8 @@ public class TraitFactories
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
             object path = _params["Path"];
-            return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, 10));
+            object ppu = _params["PixelsPerUnit"];
+            return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, Convert.ToInt32(ppu)));
         }
     }
 
@@ -54,6 +56,9 @@ public class TraitFactories
     {
         public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
         {
+            object ppuobj = _params["PixelsPerUnit"];
+            int ppu = Convert.ToInt32(ppuobj);
+            
             object objdict = _params["SpriteStates"];
             object[] objarr = (objdict as IEnumerable<object>).ToArray();
 
@@ -64,7 +69,7 @@ public class TraitFactories
                 string[] arr = str.Split(':');
                 arr[0] = arr[0].Trim(new char[] { '"' } );
                 arr[1] = arr[1].Trim(new char[] { '"', ' ' });
-                dict.Add(arr[0], Utilities.LoadSprite(arr[1], 10));
+                dict.Add(arr[0], Utilities.LoadSprite(arr[1], ppu));
             }
             return new TraitDatas.StateRenderData(dict);
         }

@@ -14,7 +14,7 @@
       },
       {
         "Item1": "SimpleRenderTrait",
-        "Item2": { "Path": "Arts/Prop" }
+        "Item2": { "Path": "Arts/Prop", "PixelsPerUnit": 10 }
       }
     ]
   },
@@ -29,7 +29,7 @@
       },
       {
         "Item1": "TiledRenderTrait",
-        "Item2": { "Path": "Arts/RockSet" }
+        "Item2": { "Path": "Arts/RockSet", "PixelsPerUnit": 10 }
       }
     ]
   },
@@ -48,7 +48,7 @@
       },
       {
         "Item1": "SimpleRenderTrait",
-        "Item2": { "Path": "Arts/Digger" }
+        "Item2": { "Path": "Arts/Digger", "PixelsPerUnit": 10 }
       }
     ]
   },
@@ -59,11 +59,26 @@
     "Traits": [
       {
         "Item1": "SimpleRenderTrait",
-        "Item2": { "Path": "Arts/CobaltOre" }
+        "Item2": { "Path": "Arts/CobaltOre", "PixelsPerUnit": 10 }
       },
       {
         "Item1": "VeinTrait",
         "Item2": { "ResourceName": "Cobalt", "MineRate": 1.0 }
+      }
+    ]
+  },
+  {
+    "Name": "CrystalVein",
+    "Width": 2,
+    "Height": 2,
+    "Traits": [
+      {
+        "Item1": "SimpleRenderTrait",
+        "Item2": {"Path": "Arts/Crystal", "PixelsPerUnit": 16}
+      },
+      {
+        "Item1": "VeinTrait",
+        "Item2": { "ResourceName": "Crystal", "MineRate": 1.0 }
       }
     ]
   }, 
@@ -74,7 +89,7 @@
     "Traits": [
       {
         "Item1": "StateRenderTrait",
-        "Item2": { "SpriteStates": { "Staying": "Arts/Prop", "Mining": "Arts/Digger" } }
+        "Item2": { "SpriteStates": { "Staying": "Arts/Prop", "Mining": "Arts/Digger" }, "PixelsPerUnit": 10 }
       },
       {
         "Item1": "HealthTrait",

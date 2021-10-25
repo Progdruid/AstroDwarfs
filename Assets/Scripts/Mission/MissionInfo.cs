@@ -35,16 +35,13 @@ public class MissionInfo
             InfoUpdateEvent();
         Resources.Add(_key, _value);
     }
-
+    public bool ContainsRes(string _key) => Resources.ContainsKey(_key);
 
     public delegate void InfoUpdateHandler();
     public event InfoUpdateHandler InfoUpdateEvent;
 
-
     public MissionInfo ()
     {
         Resources = new Dictionary<string, decimal>();
-
-        Resources.Add("Cobalt", 0);
     }
 }

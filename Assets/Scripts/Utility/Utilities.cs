@@ -29,27 +29,27 @@ public class Utilities
         int h = loadTexture.height / 4;
 
         Sprite[] sprites = new Sprite[16];
-        sprites[0] = Slice(loadTexture, 1 * w, 1 * h, w, h, _ppu);  //center          - 0000
-        sprites[1] = Slice(loadTexture, 1 * w, 2 * h, w, h, _ppu);  //up              - 0001
-        sprites[2] = Slice(loadTexture, 2 * w, 1 * h, w, h, _ppu);  //right           - 0010
-        sprites[3] = Slice(loadTexture, 2 * w, 2 * h, w, h, _ppu);  //up-right        - 0011
-        sprites[4] = Slice(loadTexture, 1 * w, 0 * h, w, h, _ppu);  //down            - 0100
-        sprites[5] = Slice(loadTexture, 1 * w, 3 * h, w, h, _ppu);  //up-down         - 0101
-        sprites[6] = Slice(loadTexture, 2 * w, 0 * h, w, h, _ppu);  //right-down      - 0110
-        sprites[7] = Slice(loadTexture, 2 * w, 3 * h, w, h, _ppu);  //up-right-down   - 0111
-        sprites[8] = Slice(loadTexture, 0 * w, 1 * h, w, h, _ppu);  //left            - 1000
-        sprites[9] = Slice(loadTexture, 0 * w, 2 * h, w, h, _ppu);  //up-left         - 1001
-        sprites[10] = Slice(loadTexture, 3 * w, 1 * h, w, h, _ppu); //right-left      - 1010
-        sprites[11] = Slice(loadTexture, 3 * w, 2 * h, w, h, _ppu); //up-right-left   - 1011
-        sprites[12] = Slice(loadTexture, 0 * w, 0 * h, w, h, _ppu); //down-left       - 1100
-        sprites[13] = Slice(loadTexture, 0 * w, 3 * h, w, h, _ppu); //up-down-left    - 1101
-        sprites[14] = Slice(loadTexture, 3 * w, 0 * h, w, h, _ppu); //right-down-left - 1110
-        sprites[15] = Slice(loadTexture, 3 * w, 3 * h, w, h, _ppu); //all             - 1111
+        sprites[0] = GetPiece(loadTexture, 1 * w, 1 * h, w, h, _ppu);  //center          - 0000
+        sprites[1] = GetPiece(loadTexture, 1 * w, 2 * h, w, h, _ppu);  //up              - 0001
+        sprites[2] = GetPiece(loadTexture, 2 * w, 1 * h, w, h, _ppu);  //right           - 0010
+        sprites[3] = GetPiece(loadTexture, 2 * w, 2 * h, w, h, _ppu);  //up-right        - 0011
+        sprites[4] = GetPiece(loadTexture, 1 * w, 0 * h, w, h, _ppu);  //down            - 0100
+        sprites[5] = GetPiece(loadTexture, 1 * w, 3 * h, w, h, _ppu);  //up-down         - 0101
+        sprites[6] = GetPiece(loadTexture, 2 * w, 0 * h, w, h, _ppu);  //right-down      - 0110
+        sprites[7] = GetPiece(loadTexture, 2 * w, 3 * h, w, h, _ppu);  //up-right-down   - 0111
+        sprites[8] = GetPiece(loadTexture, 0 * w, 1 * h, w, h, _ppu);  //left            - 1000
+        sprites[9] = GetPiece(loadTexture, 0 * w, 2 * h, w, h, _ppu);  //up-left         - 1001
+        sprites[10] = GetPiece(loadTexture, 3 * w, 1 * h, w, h, _ppu); //right-left      - 1010
+        sprites[11] = GetPiece(loadTexture, 3 * w, 2 * h, w, h, _ppu); //up-right-left   - 1011
+        sprites[12] = GetPiece(loadTexture, 0 * w, 0 * h, w, h, _ppu); //down-left       - 1100
+        sprites[13] = GetPiece(loadTexture, 0 * w, 3 * h, w, h, _ppu); //up-down-left    - 1101
+        sprites[14] = GetPiece(loadTexture, 3 * w, 0 * h, w, h, _ppu); //right-down-left - 1110
+        sprites[15] = GetPiece(loadTexture, 3 * w, 3 * h, w, h, _ppu); //all             - 1111
 
         return sprites;
     }
 
-    private static Sprite Slice (Texture2D _texture, int _x, int _y, int _w, int _h, int _ppu)
+    private static Sprite GetPiece (Texture2D _texture, int _x, int _y, int _w, int _h, int _ppu)
     {
         Color[] colors = _texture.GetPixels(_x, _y, _w, _h);
         Texture2D resTex = new Texture2D(_w, _h);
