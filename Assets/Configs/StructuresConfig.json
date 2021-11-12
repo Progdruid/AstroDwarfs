@@ -1,5 +1,24 @@
 [
   {
+    "Name": "Pilar",
+    "Width": 1,
+    "Height": 1,
+    "Traits": [
+      {
+        "Item1": "PilarTrait",
+        "Item2": { "Range": 6.0 }
+      },
+      {
+        "Item1": "HealthTrait",
+        "Item2": { "Health": 20 }
+      },
+      {
+        "Item1": "SimpleRenderTrait",
+        "Item2": { "Path": "Arts/Rock", "PixelsPerUnit": 10 }
+      }
+    ]
+  },
+  {
     "Name": "Prop",
     "Width": 2,
     "Height": 2,

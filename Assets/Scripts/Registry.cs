@@ -75,6 +75,7 @@ public class Registry
         factories.Add("DiggerTrait", new TraitFactories.DiggerFactory());
         factories.Add("ExpanderTrait", new TraitFactories.ExpanderFactory());
         factories.Add("HealthTrait", new TraitFactories.HealthFactory());
+        factories.Add("PilarTrait", new TraitFactories.PilarFactory());
         factories.Add("PropTrait", new TraitFactories.PropFactory());
         factories.Add("SimpleRenderTrait", new TraitFactories.SimpleRenderFactory());
         factories.Add("TiledRenderTrait", new TraitFactories.TiledRenderFactory());

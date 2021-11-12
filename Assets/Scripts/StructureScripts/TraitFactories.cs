@@ -8,24 +8,33 @@ public class TraitFactories
 {
     public abstract class TraitFactory
     {
-        public abstract TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params);
+        public abstract TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args);
     }
     
     public class HealthFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object health = _params["Health"];
+            object health = _args["Health"];
 
             return new TraitDatas.HealthData(Convert.ToInt32(health));
         }
     }
 
+    public class PilarFactory : TraitFactory
+    {
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
+        {
+            object range = _args["Range"];
+            return new TraitDatas.PilarData((float)(double)range);
+        }
+    }
+
     public class PropFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object range = _params["Range"];
+            object range = _args["Range"];
             return new TraitDatas.PropData((float)(double)range);
         }
     }
@@ -34,32 +43,32 @@ public class TraitFactories
     
     public class SimpleRenderFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object path = _params["Path"];
-            object ppu = _params["PixelsPerUnit"];
+            object path = _args["Path"];
+            object ppu = _args["PixelsPerUnit"];
             return new TraitDatas.SimpleRenderData( Utilities.LoadSprite((string)path, Convert.ToInt32(ppu)) );
         }
     }
 
     public class TiledRenderFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object path = _params["Path"];
-            object ppu = _params["PixelsPerUnit"];
+            object path = _args["Path"];
+            object ppu = _args["PixelsPerUnit"];
             return new TraitDatas.TiledRenderData(Utilities.LoadSlicedSet((string)path, Convert.ToInt32(ppu)));
         }
     }
 
     public class StateRenderFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object ppuobj = _params["PixelsPerUnit"];
+            object ppuobj = _args["PixelsPerUnit"];
             int ppu = Convert.ToInt32(ppuobj);
             
-            object objdict = _params["SpriteStates"];
+            object objdict = _args["SpriteStates"];
             object[] objarr = (objdict as IEnumerable<object>).ToArray();
 
             Dictionary<string, Sprite> dict = new Dictionary<string, Sprite>(); 
@@ -79,20 +88,20 @@ public class TraitFactories
 
     public class ExpanderFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object cooldown = _params["Cooldown"];
+            object cooldown = _args["Cooldown"];
             return new TraitDatas.ExpanderData((float)(double)cooldown);
         }
     }
 
     public class DiggerFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object targets = _params["Targets"];
-            object diggingSpeed =_params["DiggingSpeed"];
-            object range = _params["Range"];
+            object targets = _args["Targets"];
+            object diggingSpeed =_args["DiggingSpeed"];
+            object range = _args["Range"];
             List<string> _targets = new List<string>();
             foreach(object objTarget in targets as IEnumerable<object>)
             {
@@ -106,19 +115,19 @@ public class TraitFactories
 
     public class VeinFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object _name = _params["ResourceName"];
-            object _mineRate = _params["MineRate"];
+            object _name = _args["ResourceName"];
+            object _mineRate = _args["MineRate"];
             return new TraitDatas.VeinData(_name.ToString(), (double)_mineRate);
         }
     }
 
     public class MinerFactory : TraitFactory
     {
-        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _params)
+        public override TraitDatas.TraitData CreateTraitData(Dictionary<string, object> _args)
         {
-            object _range = _params["Range"];
+            object _range = _args["Range"];
             return new TraitDatas.MinerData((float)(double)_range);
         }
     }

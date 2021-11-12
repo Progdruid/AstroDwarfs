@@ -61,6 +61,21 @@ public class TraitDatas
 
     #endregion
 
+    public class PilarData : TraitData
+    {
+        public readonly float Range;
+
+        public PilarData (float _range)
+        {
+            Range = _range;
+        }
+
+        public override Trait CreateThisTrait(Structure _structure)
+        {
+            return new PilarTrait(this, _structure);
+        }
+    }
+
     public class PropData : TraitDatas.TraitData
     {
         public readonly float Range;

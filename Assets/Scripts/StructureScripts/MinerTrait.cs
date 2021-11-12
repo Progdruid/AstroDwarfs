@@ -35,6 +35,7 @@ public class MinerTrait : Trait
             return;
         }
 
-        msInfo.IncreaseResByKey(vein.data.ResourceName, (decimal)vein.data.MineRate * (decimal)Mission.ins.tickTime);
+        if (PilarTrait.CheckConnectionToNetwork(Str.x, Str.y))
+            msInfo.IncreaseResByKey(vein.data.ResourceName, (decimal)vein.data.MineRate * (decimal)Mission.ins.tickTime);
     }
 }
